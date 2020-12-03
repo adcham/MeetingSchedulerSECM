@@ -63,7 +63,7 @@ namespace MeetingScheduler
       bool found = false;
       while (!found)
       {
-        for (int i = 0; i < noOfParticipants; i++)
+        for (int i = 0; i < noOfParticipants-1; i++)
         {
           if (participants.ElementAt(i).p.getName().Equals(name))
           {

@@ -1,4 +1,4 @@
-﻿intusing System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -52,6 +52,13 @@ namespace MeetingScheduler
       testMeeting.addParticipant(testUser1, false);
       testMeeting.addParticipant(testUser2, true);
       testMeeting.addParticipant(testUser3, false);
+
+      testMeeting.changeImportance("Maxwel", false);
+      testMeeting.removeParticipant("Adam");
+      Equipment testEquipment =  new Equipment("Projecter",  true,  false);
+
+      Location testLocation = new Location("Room 1", "Sheffield Road");
+      testLocation.addEquipment(testEquipment);
 
       Console.WriteLine("");
 

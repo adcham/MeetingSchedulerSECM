@@ -14,7 +14,7 @@ namespace MeetingScheduler
     private string locationAddress;
     private List<Equipment> availableEquipment;
 
-    Location(string name, string address)
+    public Location(string name, string address)
     {
       locationID = noOfLocations;
       noOfLocations++;
@@ -22,10 +22,10 @@ namespace MeetingScheduler
       locationName = name;
       locationAddress = address;
 
-      availableEquipment = new List<Equipment>;
+      availableEquipment = new List<Equipment>();
     }
 
-    void addEquipment(Equipment newEquipment)
+    public void addEquipment(Equipment newEquipment)
     {
       availableEquipment.Add(newEquipment);
     }

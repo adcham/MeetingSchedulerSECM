@@ -8,7 +8,7 @@ namespace MeetingScheduler
 {
   class Equipment
   {
-    static private List<Equipment> equipmentList = new List<Equipment>;
+    static private List<Equipment> equipmentList = new List<Equipment>();
     private string name;
     private bool movable;
     private bool temporary;
