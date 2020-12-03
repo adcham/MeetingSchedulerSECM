@@ -17,6 +17,7 @@ namespace MeetingScheduler
       this.startSlot = startSlot;
       this.endSlot = endSlot;
       participants = new List<User>;
+      //test
     }
   }
 }
