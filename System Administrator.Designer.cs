@@ -31,7 +31,7 @@ namespace MeetingScheduler
     {
       this.button1 = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
-      this.button2 = new System.Windows.Forms.Button();
+      this.backToMainMenuButton = new System.Windows.Forms.Button();
       this.textBox1 = new System.Windows.Forms.TextBox();
       this.label2 = new System.Windows.Forms.Label();
       this.textBox2 = new System.Windows.Forms.TextBox();
@@ -63,15 +63,15 @@ namespace MeetingScheduler
       this.label1.TabIndex = 1;
       this.label1.Text = "System Adminstrator View";
       // 
-      // button2
+      // backToMainMenuButton
       // 
-      this.button2.Location = new System.Drawing.Point(12, 415);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(115, 23);
-      this.button2.TabIndex = 2;
-      this.button2.Text = "Back to Main Menu";
-      this.button2.UseVisualStyleBackColor = true;
-      this.button2.Click += new System.EventHandler(this.button2_Click);
+      this.backToMainMenuButton.Location = new System.Drawing.Point(12, 415);
+      this.backToMainMenuButton.Name = "backToMainMenuButton";
+      this.backToMainMenuButton.Size = new System.Drawing.Size(115, 23);
+      this.backToMainMenuButton.TabIndex = 2;
+      this.backToMainMenuButton.Text = "Back to Main Menu";
+      this.backToMainMenuButton.UseVisualStyleBackColor = true;
+      this.backToMainMenuButton.Click += new System.EventHandler(this.button2_Click);
       // 
       // textBox1
       // 
@@ -177,7 +177,7 @@ namespace MeetingScheduler
       this.Controls.Add(this.textBox2);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.textBox1);
-      this.Controls.Add(this.button2);
+      this.Controls.Add(this.backToMainMenuButton);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.button1);
       this.Name = "System_Administrator";
@@ -192,7 +192,7 @@ namespace MeetingScheduler
 
     private System.Windows.Forms.Button button1;
     private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.Button backToMainMenuButton;
     private System.Windows.Forms.TextBox textBox1;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.TextBox textBox2;

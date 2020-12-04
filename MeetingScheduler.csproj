@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Equiptment Keeper.cs">
+    <Compile Include="Equipment Keeper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Equiptment Keeper.Designer.cs">
-      <DependentUpon>Equiptment Keeper.cs</DependentUpon>
+    <Compile Include="Equipment Keeper.Designer.cs">
+      <DependentUpon>Equipment Keeper.cs</DependentUpon>
     </Compile>
     <Compile Include="meeting.cs" />
     <Compile Include="Equipment.cs" />
@@ -70,6 +70,9 @@
       <DependentUpon>System Administrator.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="Equipment Keeper.resx">
+      <DependentUpon>Equipment Keeper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>

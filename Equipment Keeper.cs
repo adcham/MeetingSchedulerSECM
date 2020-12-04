@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace MeetingScheduler
 {
-  public partial class Equiptment_Keeper : Form
+  public partial class Equipment_Keeper : Form
   {
-    public Equiptment_Keeper()
+    public Equipment_Keeper()
     {
       InitializeComponent();
+    }
+
+    private void backToMainMenuButton_Click(object sender, EventArgs e)
+    {
+      MainMenu newForm = new MainMenu();
+      this.Hide();
+      newForm.ShowDialog();
     }
   }
 }

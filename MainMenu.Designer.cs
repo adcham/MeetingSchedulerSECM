@@ -30,12 +30,12 @@ namespace MeetingScheduler
     private void InitializeComponent()
     {
       this.label1 = new System.Windows.Forms.Label();
-      this.button1 = new System.Windows.Forms.Button();
-      this.button2 = new System.Windows.Forms.Button();
-      this.button3 = new System.Windows.Forms.Button();
-      this.button4 = new System.Windows.Forms.Button();
-      this.button5 = new System.Windows.Forms.Button();
-      this.button6 = new System.Windows.Forms.Button();
+      this.goToMeetingInitiatorView = new System.Windows.Forms.Button();
+      this.goToSysAdminView = new System.Windows.Forms.Button();
+      this.gotoEquipmentKeeperView = new System.Windows.Forms.Button();
+      this.goToImportantParticipantView = new System.Windows.Forms.Button();
+      this.goToParticipantView = new System.Windows.Forms.Button();
+      this.exitProgramButton = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // label1
@@ -48,73 +48,74 @@ namespace MeetingScheduler
       this.label1.Text = "Main Menu";
       this.label1.Click += new System.EventHandler(this.label1_Click);
       // 
-      // button1
+      // goToMeetingInitiatorView
       // 
-      this.button1.Location = new System.Drawing.Point(20, 56);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(143, 29);
-      this.button1.TabIndex = 1;
-      this.button1.Text = "Meeting Initiator";
-      this.button1.UseVisualStyleBackColor = true;
+      this.goToMeetingInitiatorView.Location = new System.Drawing.Point(20, 56);
+      this.goToMeetingInitiatorView.Name = "goToMeetingInitiatorView";
+      this.goToMeetingInitiatorView.Size = new System.Drawing.Size(143, 29);
+      this.goToMeetingInitiatorView.TabIndex = 1;
+      this.goToMeetingInitiatorView.Text = "Meeting Initiator";
+      this.goToMeetingInitiatorView.UseVisualStyleBackColor = true;
       // 
-      // button2
+      // goToSysAdminView
       // 
-      this.button2.Location = new System.Drawing.Point(229, 58);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(149, 24);
-      this.button2.TabIndex = 2;
-      this.button2.Text = "System Administrator";
-      this.button2.UseVisualStyleBackColor = true;
-      this.button2.Click += new System.EventHandler(this.button2_Click);
+      this.goToSysAdminView.Location = new System.Drawing.Point(229, 58);
+      this.goToSysAdminView.Name = "goToSysAdminView";
+      this.goToSysAdminView.Size = new System.Drawing.Size(149, 24);
+      this.goToSysAdminView.TabIndex = 2;
+      this.goToSysAdminView.Text = "System Administrator";
+      this.goToSysAdminView.UseVisualStyleBackColor = true;
+      this.goToSysAdminView.Click += new System.EventHandler(this.button2_Click);
       // 
-      // button3
+      // gotoEquipmentKeeperView
       // 
-      this.button3.Location = new System.Drawing.Point(436, 58);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(149, 23);
-      this.button3.TabIndex = 3;
-      this.button3.Text = "Equipment Keeper";
-      this.button3.UseVisualStyleBackColor = true;
+      this.gotoEquipmentKeeperView.Location = new System.Drawing.Point(436, 58);
+      this.gotoEquipmentKeeperView.Name = "gotoEquipmentKeeperView";
+      this.gotoEquipmentKeeperView.Size = new System.Drawing.Size(149, 23);
+      this.gotoEquipmentKeeperView.TabIndex = 3;
+      this.gotoEquipmentKeeperView.Text = "Equipment Keeper";
+      this.gotoEquipmentKeeperView.UseVisualStyleBackColor = true;
+      this.gotoEquipmentKeeperView.Click += new System.EventHandler(this.button3_Click);
       // 
-      // button4
+      // goToImportantParticipantView
       // 
-      this.button4.Location = new System.Drawing.Point(129, 103);
-      this.button4.Name = "button4";
-      this.button4.Size = new System.Drawing.Size(120, 23);
-      this.button4.TabIndex = 4;
-      this.button4.Text = "Important Participant";
-      this.button4.UseVisualStyleBackColor = true;
+      this.goToImportantParticipantView.Location = new System.Drawing.Point(129, 103);
+      this.goToImportantParticipantView.Name = "goToImportantParticipantView";
+      this.goToImportantParticipantView.Size = new System.Drawing.Size(120, 23);
+      this.goToImportantParticipantView.TabIndex = 4;
+      this.goToImportantParticipantView.Text = "Important Participant";
+      this.goToImportantParticipantView.UseVisualStyleBackColor = true;
       // 
-      // button5
+      // goToParticipantView
       // 
-      this.button5.Location = new System.Drawing.Point(367, 103);
-      this.button5.Name = "button5";
-      this.button5.Size = new System.Drawing.Size(75, 23);
-      this.button5.TabIndex = 5;
-      this.button5.Text = "Participant";
-      this.button5.UseVisualStyleBackColor = true;
+      this.goToParticipantView.Location = new System.Drawing.Point(367, 103);
+      this.goToParticipantView.Name = "goToParticipantView";
+      this.goToParticipantView.Size = new System.Drawing.Size(75, 23);
+      this.goToParticipantView.TabIndex = 5;
+      this.goToParticipantView.Text = "Participant";
+      this.goToParticipantView.UseVisualStyleBackColor = true;
       // 
-      // button6
+      // exitProgramButton
       // 
-      this.button6.Location = new System.Drawing.Point(13, 152);
-      this.button6.Name = "button6";
-      this.button6.Size = new System.Drawing.Size(75, 23);
-      this.button6.TabIndex = 6;
-      this.button6.Text = "Exit";
-      this.button6.UseVisualStyleBackColor = true;
-      this.button6.Click += new System.EventHandler(this.button6_Click);
+      this.exitProgramButton.Location = new System.Drawing.Point(13, 152);
+      this.exitProgramButton.Name = "exitProgramButton";
+      this.exitProgramButton.Size = new System.Drawing.Size(75, 23);
+      this.exitProgramButton.TabIndex = 6;
+      this.exitProgramButton.Text = "Exit";
+      this.exitProgramButton.UseVisualStyleBackColor = true;
+      this.exitProgramButton.Click += new System.EventHandler(this.button6_Click);
       // 
       // MainMenu
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(605, 187);
-      this.Controls.Add(this.button6);
-      this.Controls.Add(this.button5);
-      this.Controls.Add(this.button4);
-      this.Controls.Add(this.button3);
-      this.Controls.Add(this.button2);
-      this.Controls.Add(this.button1);
+      this.Controls.Add(this.exitProgramButton);
+      this.Controls.Add(this.goToParticipantView);
+      this.Controls.Add(this.goToImportantParticipantView);
+      this.Controls.Add(this.gotoEquipmentKeeperView);
+      this.Controls.Add(this.goToSysAdminView);
+      this.Controls.Add(this.goToMeetingInitiatorView);
       this.Controls.Add(this.label1);
       this.Name = "MainMenu";
       this.Text = "Meeting Scheduler";
@@ -127,12 +128,12 @@ namespace MeetingScheduler
     #endregion
 
     private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.Button button1;
-    private System.Windows.Forms.Button button2;
-    private System.Windows.Forms.Button button3;
-    private System.Windows.Forms.Button button4;
-    private System.Windows.Forms.Button button5;
-    private System.Windows.Forms.Button button6;
+    private System.Windows.Forms.Button goToMeetingInitiatorView;
+    private System.Windows.Forms.Button goToSysAdminView;
+    private System.Windows.Forms.Button gotoEquipmentKeeperView;
+    private System.Windows.Forms.Button goToImportantParticipantView;
+    private System.Windows.Forms.Button goToParticipantView;
+    private System.Windows.Forms.Button exitProgramButton;
   }
 }
 

@@ -24,9 +24,9 @@ namespace MeetingScheduler
 
     private void button2_Click(object sender, EventArgs e)
     {
-      System_Administrator newForm = new System_Administrator();
-      this.Hide();
-      newForm.ShowDialog();
+        System_Administrator newForm = new System_Administrator();
+        this.Hide();
+        newForm.ShowDialog();
     }
 
     private void button6_Click(object sender, EventArgs e)
@@ -37,6 +37,13 @@ namespace MeetingScheduler
     private void MainMenu_Load(object sender, EventArgs e)
     {
 
+    }
+
+    private void button3_Click(object sender, EventArgs e)
+    {
+      Equipment_Keeper newForm = new Equipment_Keeper();
+      this.Hide();
+      newForm.ShowDialog();
     }
   }
 }
