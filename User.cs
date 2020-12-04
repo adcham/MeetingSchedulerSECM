@@ -10,6 +10,7 @@ namespace MeetingScheduler
   class User
   {
     private static int noOfUsers = 0;
+    private static List<User> userList = new List<User>();
     private int userID;
     private String name;
     public enum EmployeeType { systemAdmin = 0, equipmentKeeper = 1, meetingInitiator = 2, participant = 3 }
@@ -28,6 +29,7 @@ namespace MeetingScheduler
       meetingList = new List<Meeting>();
       exclusionSet = new List<int>();
       preferenceSet = new List<int>();
+      userList.Add(this);
     }
     public void addPreferenceSlot(int slot)
     {

@@ -8,6 +8,7 @@ namespace MeetingScheduler
 {
   class Location
   {
+    static private List<Location> locationList = new List<Location>();
     private static int noOfLocations = 0;
     private int locationID;
     private string locationName;
@@ -23,11 +24,78 @@ namespace MeetingScheduler
       locationAddress = address;
 
       availableEquipment = new List<Equipment>();
+
+      locationList.Add(this);
     }
 
-    public void addEquipment(Equipment newEquipment)
+    public void addEquipmentToLocation(Equipment newEquipment)
     {
       availableEquipment.Add(newEquipment);
     }
+
+    public void removeEquipmentFromLocation(string equipmentName)
+    {
+      availableEquipment.RemoveAt(findEquipmentIndex(equipmentName));
+    }
+
+    public void deleteLocation(string eName)
+    {
+      int foundLocationIndex = findLocationIndex(eName);
+      if (foundLocationIndex != -1)
+      {
+        locationList.RemoveAt(foundLocationIndex);
+      }
+      else
+      {
+        //code to say user was not found and therefore not removed.
+      }
+    }
+
+    public int findLocationIndex(string name)
+    {
+      int foundLocationIndex = 0;
+      bool found = false;
+      while (!found && foundLocationIndex < locationList.Count() - 1)
+      {
+        if (locationList.ElementAt(foundLocationIndex).locationName.Equals(name))
+        {
+          found = true;
+        }
+        else
+        {
+          foundLocationIndex++;
+        }
+      }
+      if (!found)
+      {
+        foundLocationIndex = -1;
+      }
+      return foundLocationIndex;
+      
+    }
+
+    public int findEquipmentIndex(string name)
+    {
+      int foundEquipmentIndex = 0;
+      bool found = false;
+      while (!found && foundEquipmentIndex < locationList.Count() - 1)
+      {
+        if (locationList.ElementAt(foundEquipmentIndex).locationName.Equals(name))
+        {
+          found = true;
+        }
+        else
+        {
+          foundEquipmentIndex++;
+        }
+      }
+      if (!found)
+      {
+        foundEquipmentIndex = -1;
+      }
+      return foundEquipmentIndex;
+
+    }
+
   }
 }

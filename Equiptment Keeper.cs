@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MeetingScheduler
 {
-  public partial class Form1 : Form
+  public partial class Equiptment_Keeper : Form
   {
-    public Form1()
+    public Equiptment_Keeper()
     {
       InitializeComponent();
     }

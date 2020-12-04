@@ -55,18 +55,25 @@ namespace MeetingScheduler
 
       testMeeting.changeImportance("Maxwel", false);
       testMeeting.removeParticipant("Adam");
-      Equipment testEquipment =  new Equipment("Projecter",  true,  false);
+
+      Equipment testEquipment = new Equipment("Projector",  true,  false);
+      Equipment testEquipment2 = new Equipment("Whiteboard", true, false);
+      Equipment testEquipment3 = new Equipment("Laptops", true, false);
 
       Location testLocation = new Location("Room 1", "Sheffield Road");
-      testLocation.addEquipment(testEquipment);
+      testLocation.addEquipmentToLocation(testEquipment);
+      testLocation.addEquipmentToLocation(testEquipment2);
+      testLocation.addEquipmentToLocation(testEquipment3);
 
-      Console.WriteLine("");
+      Location testLocation2 = new Location("Room 5", "Somewhere in Chesterfield");
+      testLocation2.addEquipmentToLocation(testEquipment);
+      testLocation2.addEquipmentToLocation(testEquipment2);
+      testLocation2.addEquipmentToLocation(testEquipment3);
 
-
-      /// logic for running the form1
-      //Application.EnableVisualStyles();
-      //Application.SetCompatibleTextRenderingDefault(false);
-      //Application.Run(new Form1());
+      // logic for running the main menu
+      Application.EnableVisualStyles();
+      Application.SetCompatibleTextRenderingDefault(false);
+      Application.Run(new MainMenu());
     }
   }
 }

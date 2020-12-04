@@ -59,18 +59,22 @@ namespace MeetingScheduler
     }
     public int findParticipantIndex(string name)
     {
-      int foundIndex = -1;
+      int foundIndex = 0;
       bool found = false;
-      while (!found)
+      while (!found && foundIndex < noOfParticipants - 1)       
       {
-        for (int i = 0; i < noOfParticipants-1; i++)
+        if (participants.ElementAt(foundIndex).p.getName().Equals(name))
         {
-          if (participants.ElementAt(i).p.getName().Equals(name))
-          {
-            foundIndex = i;
             found = true;
           }
-        }
+          else
+          {
+            foundIndex++;
+          }
+      }
+      if (!found)
+      {
+        foundIndex  =  -1;
       }
       return foundIndex;
     }
