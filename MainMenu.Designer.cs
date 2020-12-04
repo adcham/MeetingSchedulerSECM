@@ -86,6 +86,7 @@ namespace MeetingScheduler
       this.goToImportantParticipantView.TabIndex = 4;
       this.goToImportantParticipantView.Text = "Important Participant";
       this.goToImportantParticipantView.UseVisualStyleBackColor = true;
+      this.goToImportantParticipantView.Click += new System.EventHandler(this.goToImportantParticipantView_Click);
       // 
       // goToParticipantView
       // 
@@ -95,6 +96,7 @@ namespace MeetingScheduler
       this.goToParticipantView.TabIndex = 5;
       this.goToParticipantView.Text = "Participant";
       this.goToParticipantView.UseVisualStyleBackColor = true;
+      this.goToParticipantView.Click += new System.EventHandler(this.goToParticipantView_Click);
       // 
       // exitProgramButton
       // 

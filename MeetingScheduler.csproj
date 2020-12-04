@@ -52,6 +52,12 @@
     <Compile Include="Equipment Keeper.Designer.cs">
       <DependentUpon>Equipment Keeper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Important Participant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Important Participant.Designer.cs">
+      <DependentUpon>Important Participant.cs</DependentUpon>
+    </Compile>
     <Compile Include="Meeting Initiator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,12 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Participant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Participant.Designer.cs">
+      <DependentUpon>Participant.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System Administrator.cs">
@@ -79,11 +91,17 @@
     <EmbeddedResource Include="Equipment Keeper.resx">
       <DependentUpon>Equipment Keeper.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Important Participant.resx">
+      <DependentUpon>Important Participant.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Meeting Initiator.resx">
       <DependentUpon>Meeting Initiator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Participant.resx">
+      <DependentUpon>Participant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
