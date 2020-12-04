@@ -45,5 +45,12 @@ namespace MeetingScheduler
       this.Hide();
       newForm.ShowDialog();
     }
+
+    private void goToMeetingInitiatorView_Click(object sender, EventArgs e)
+    {
+      Meeting_Initiator newForm = new Meeting_Initiator();
+      this.Hide();
+      newForm.ShowDialog();
+    }
   }
 }

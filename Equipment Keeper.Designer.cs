@@ -255,11 +255,11 @@ namespace MeetingScheduler
       // 
       // button3
       // 
-      this.button3.Location = new System.Drawing.Point(420, 443);
+      this.button3.Location = new System.Drawing.Point(391, 443);
       this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(118, 23);
+      this.button3.Size = new System.Drawing.Size(147, 23);
       this.button3.TabIndex = 36;
-      this.button3.Text = "Remove equipment";
+      this.button3.Text = "Change equipment location";
       this.button3.UseVisualStyleBackColor = true;
       // 
       // comboBox5

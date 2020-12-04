@@ -56,6 +56,7 @@ namespace MeetingScheduler
       this.goToMeetingInitiatorView.TabIndex = 1;
       this.goToMeetingInitiatorView.Text = "Meeting Initiator";
       this.goToMeetingInitiatorView.UseVisualStyleBackColor = true;
+      this.goToMeetingInitiatorView.Click += new System.EventHandler(this.goToMeetingInitiatorView_Click);
       // 
       // goToSysAdminView
       // 

@@ -56,9 +56,9 @@ namespace MeetingScheduler
       testMeeting.changeImportance("Maxwel", false);
       testMeeting.removeParticipant("Adam");
 
-      Equipment testEquipment = new Equipment("Projector",  true,  false);
-      Equipment testEquipment2 = new Equipment("Whiteboard", true, false);
-      Equipment testEquipment3 = new Equipment("Laptops", true, false);
+      Equipment testEquipment = new Equipment("Projector",  true);
+      Equipment testEquipment2 = new Equipment("Whiteboard", true);
+      Equipment testEquipment3 = new Equipment("Laptops", true);
 
       Location testLocation = new Location("Room 1", "Sheffield Road");
       testLocation.addEquipmentToLocation(testEquipment);

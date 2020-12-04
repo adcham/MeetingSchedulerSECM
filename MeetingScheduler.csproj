@@ -52,6 +52,12 @@
     <Compile Include="Equipment Keeper.Designer.cs">
       <DependentUpon>Equipment Keeper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Meeting Initiator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Meeting Initiator.Designer.cs">
+      <DependentUpon>Meeting Initiator.cs</DependentUpon>
+    </Compile>
     <Compile Include="meeting.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="Location.cs" />
@@ -75,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Meeting Initiator.resx">
+      <DependentUpon>Meeting Initiator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
