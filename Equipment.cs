@@ -12,23 +12,21 @@ namespace MeetingScheduler
 
     private string name;
     private bool movable;
-    private bool temporary;
 
     public Equipment(string eName)
     {
       this.name = eName;
       this.movable = false;
-      this.temporary = false;
-      equipmentList.Add(this);
+    //  equipmentList.Add(this);
     }
-    public Equipment(string eName, bool mov, bool temp)
+    public Equipment(string eName, bool mov)
     {
       this.name = eName;
       this.movable = mov;
-      this.temporary = temp;
-      equipmentList.Add(this);
+     // equipmentList.Add(this);
     }
 
+    /*
     public void deleteEquipment(string eName)
     {
       int foundEquipmentIndex = findEquipment(eName);
@@ -64,7 +62,7 @@ namespace MeetingScheduler
       return foundEquipmentIndex;
       
     }
-
+    */
 
   }
 }
