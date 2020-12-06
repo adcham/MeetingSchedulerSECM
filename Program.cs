@@ -26,12 +26,13 @@ namespace MeetingScheduler
       User testUser2 = new User("Maxwel", User.EmployeeType.participant);
       User testUser3 = new User("Adam", User.EmployeeType.participant);
 
+
       testUser1.addPreferenceSlot(1);
       testUser1.addPreferenceSlot(2);
       testUser1.addPreferenceSlot(3);
+      testUser1.addExclusionSlot(3);
       testUser1.addExclusionSlot(4);
       testUser1.addExclusionSlot(5);
-      testUser1.addExclusionSlot(6);
 
       testUser2.addPreferenceSlot(1);
       testUser2.addPreferenceSlot(2);

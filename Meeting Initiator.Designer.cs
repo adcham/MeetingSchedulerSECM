@@ -32,15 +32,15 @@ namespace MeetingScheduler
       this.label5 = new System.Windows.Forms.Label();
       this.backToMainMenuButton = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
-      this.comboBox3 = new System.Windows.Forms.ComboBox();
-      this.comboBox4 = new System.Windows.Forms.ComboBox();
+      this.newMeetingLocationDropdown = new System.Windows.Forms.ComboBox();
+      this.newMeetingTimeslotDropdown = new System.Windows.Forms.ComboBox();
       this.label7 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
-      this.listBox1 = new System.Windows.Forms.ListBox();
+      this.newMeetingParticipantList = new System.Windows.Forms.ListBox();
       this.label6 = new System.Windows.Forms.Label();
-      this.button2 = new System.Windows.Forms.Button();
-      this.button3 = new System.Windows.Forms.Button();
-      this.button4 = new System.Windows.Forms.Button();
+      this.addNewParticipant = new System.Windows.Forms.Button();
+      this.createNewMeetingBtn = new System.Windows.Forms.Button();
+      this.removeSelectedParticipantFromNewMeetingBtn = new System.Windows.Forms.Button();
       this.button1 = new System.Windows.Forms.Button();
       this.button5 = new System.Windows.Forms.Button();
       this.button6 = new System.Windows.Forms.Button();
@@ -58,9 +58,11 @@ namespace MeetingScheduler
       this.button8 = new System.Windows.Forms.Button();
       this.button11 = new System.Windows.Forms.Button();
       this.label11 = new System.Windows.Forms.Label();
-      this.textBox1 = new System.Windows.Forms.TextBox();
+      this.newMeetingMeetingName = new System.Windows.Forms.TextBox();
       this.panel1 = new System.Windows.Forms.Panel();
       this.panel2 = new System.Windows.Forms.Panel();
+      this.newMeetingChooseParticipantName = new System.Windows.Forms.ComboBox();
+      this.label12 = new System.Windows.Forms.Label();
       this.panel1.SuspendLayout();
       this.panel2.SuspendLayout();
       this.SuspendLayout();
@@ -95,21 +97,23 @@ namespace MeetingScheduler
       this.label1.Text = "Meeting Initiator View";
       this.label1.Click += new System.EventHandler(this.label1_Click);
       // 
-      // comboBox3
+      // newMeetingLocationDropdown
       // 
-      this.comboBox3.FormattingEnabled = true;
-      this.comboBox3.Location = new System.Drawing.Point(136, 64);
-      this.comboBox3.Name = "comboBox3";
-      this.comboBox3.Size = new System.Drawing.Size(100, 21);
-      this.comboBox3.TabIndex = 46;
+      this.newMeetingLocationDropdown.FormattingEnabled = true;
+      this.newMeetingLocationDropdown.Location = new System.Drawing.Point(136, 64);
+      this.newMeetingLocationDropdown.Name = "newMeetingLocationDropdown";
+      this.newMeetingLocationDropdown.Size = new System.Drawing.Size(100, 21);
+      this.newMeetingLocationDropdown.TabIndex = 46;
+      this.newMeetingLocationDropdown.SelectedIndexChanged += new System.EventHandler(this.newMeetingLocationDropdown_SelectedIndexChanged);
       // 
-      // comboBox4
+      // newMeetingTimeslotDropdown
       // 
-      this.comboBox4.FormattingEnabled = true;
-      this.comboBox4.Location = new System.Drawing.Point(136, 91);
-      this.comboBox4.Name = "comboBox4";
-      this.comboBox4.Size = new System.Drawing.Size(100, 21);
-      this.comboBox4.TabIndex = 45;
+      this.newMeetingTimeslotDropdown.FormattingEnabled = true;
+      this.newMeetingTimeslotDropdown.Location = new System.Drawing.Point(136, 91);
+      this.newMeetingTimeslotDropdown.Name = "newMeetingTimeslotDropdown";
+      this.newMeetingTimeslotDropdown.Size = new System.Drawing.Size(100, 21);
+      this.newMeetingTimeslotDropdown.TabIndex = 45;
+      this.newMeetingTimeslotDropdown.SelectedIndexChanged += new System.EventHandler(this.newMeetingTimeslotDropdown_SelectedIndexChanged);
       // 
       // label7
       // 
@@ -130,22 +134,13 @@ namespace MeetingScheduler
       this.label2.Text = "Select Location";
       this.label2.Click += new System.EventHandler(this.label2_Click);
       // 
-      // listBox1
+      // newMeetingParticipantList
       // 
-      this.listBox1.FormattingEnabled = true;
-      this.listBox1.Items.AddRange(new object[] {
-            "Tom",
-            "Dick",
-            "Harry",
-            "James",
-            "Julia",
-            "Adam",
-            "Mazen",
-            "Maxwel"});
-      this.listBox1.Location = new System.Drawing.Point(242, 38);
-      this.listBox1.Name = "listBox1";
-      this.listBox1.Size = new System.Drawing.Size(100, 121);
-      this.listBox1.TabIndex = 52;
+      this.newMeetingParticipantList.FormattingEnabled = true;
+      this.newMeetingParticipantList.Location = new System.Drawing.Point(242, 38);
+      this.newMeetingParticipantList.Name = "newMeetingParticipantList";
+      this.newMeetingParticipantList.Size = new System.Drawing.Size(100, 134);
+      this.newMeetingParticipantList.TabIndex = 52;
       // 
       // label6
       // 
@@ -157,33 +152,34 @@ namespace MeetingScheduler
       this.label6.Text = "Participant List";
       this.label6.Click += new System.EventHandler(this.label6_Click);
       // 
-      // button2
+      // addNewParticipant
       // 
-      this.button2.Location = new System.Drawing.Point(136, 118);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(100, 41);
-      this.button2.TabIndex = 58;
-      this.button2.Text = "Add new participant";
-      this.button2.UseVisualStyleBackColor = true;
+      this.addNewParticipant.Location = new System.Drawing.Point(136, 145);
+      this.addNewParticipant.Name = "addNewParticipant";
+      this.addNewParticipant.Size = new System.Drawing.Size(100, 26);
+      this.addNewParticipant.TabIndex = 58;
+      this.addNewParticipant.Text = "Add Participant";
+      this.addNewParticipant.UseVisualStyleBackColor = true;
+      this.addNewParticipant.Click += new System.EventHandler(this.addNewParticipant_Click);
       // 
-      // button3
+      // createNewMeetingBtn
       // 
-      this.button3.Location = new System.Drawing.Point(136, 165);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(206, 31);
-      this.button3.TabIndex = 59;
-      this.button3.Text = "Create Meeting";
-      this.button3.UseVisualStyleBackColor = true;
-      this.button3.Click += new System.EventHandler(this.button3_Click);
+      this.createNewMeetingBtn.Location = new System.Drawing.Point(3, 200);
+      this.createNewMeetingBtn.Name = "createNewMeetingBtn";
+      this.createNewMeetingBtn.Size = new System.Drawing.Size(206, 31);
+      this.createNewMeetingBtn.TabIndex = 59;
+      this.createNewMeetingBtn.Text = "Create Meeting";
+      this.createNewMeetingBtn.UseVisualStyleBackColor = true;
+      this.createNewMeetingBtn.Click += new System.EventHandler(this.button3_Click);
       // 
-      // button4
+      // removeSelectedParticipantFromNewMeetingBtn
       // 
-      this.button4.Location = new System.Drawing.Point(26, 118);
-      this.button4.Name = "button4";
-      this.button4.Size = new System.Drawing.Size(104, 41);
-      this.button4.TabIndex = 60;
-      this.button4.Text = "Remove selected participant";
-      this.button4.UseVisualStyleBackColor = true;
+      this.removeSelectedParticipantFromNewMeetingBtn.Location = new System.Drawing.Point(242, 177);
+      this.removeSelectedParticipantFromNewMeetingBtn.Name = "removeSelectedParticipantFromNewMeetingBtn";
+      this.removeSelectedParticipantFromNewMeetingBtn.Size = new System.Drawing.Size(100, 39);
+      this.removeSelectedParticipantFromNewMeetingBtn.TabIndex = 60;
+      this.removeSelectedParticipantFromNewMeetingBtn.Text = "Remove selected participant";
+      this.removeSelectedParticipantFromNewMeetingBtn.UseVisualStyleBackColor = true;
       // 
       // button1
       // 
@@ -349,12 +345,12 @@ namespace MeetingScheduler
       this.label11.Text = "Meeting Name";
       this.label11.Click += new System.EventHandler(this.label11_Click);
       // 
-      // textBox1
+      // newMeetingMeetingName
       // 
-      this.textBox1.Location = new System.Drawing.Point(136, 38);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(100, 20);
-      this.textBox1.TabIndex = 81;
+      this.newMeetingMeetingName.Location = new System.Drawing.Point(136, 38);
+      this.newMeetingMeetingName.Name = "newMeetingMeetingName";
+      this.newMeetingMeetingName.Size = new System.Drawing.Size(100, 20);
+      this.newMeetingMeetingName.TabIndex = 81;
       // 
       // panel1
       // 
@@ -383,22 +379,42 @@ namespace MeetingScheduler
       // panel2
       // 
       this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-      this.panel2.Controls.Add(this.textBox1);
+      this.panel2.Controls.Add(this.newMeetingChooseParticipantName);
+      this.panel2.Controls.Add(this.label12);
+      this.panel2.Controls.Add(this.newMeetingMeetingName);
       this.panel2.Controls.Add(this.label11);
-      this.panel2.Controls.Add(this.button4);
-      this.panel2.Controls.Add(this.button3);
-      this.panel2.Controls.Add(this.button2);
+      this.panel2.Controls.Add(this.removeSelectedParticipantFromNewMeetingBtn);
+      this.panel2.Controls.Add(this.createNewMeetingBtn);
+      this.panel2.Controls.Add(this.addNewParticipant);
       this.panel2.Controls.Add(this.label6);
-      this.panel2.Controls.Add(this.listBox1);
+      this.panel2.Controls.Add(this.newMeetingParticipantList);
       this.panel2.Controls.Add(this.label2);
-      this.panel2.Controls.Add(this.comboBox3);
-      this.panel2.Controls.Add(this.comboBox4);
+      this.panel2.Controls.Add(this.newMeetingLocationDropdown);
+      this.panel2.Controls.Add(this.newMeetingTimeslotDropdown);
       this.panel2.Controls.Add(this.label7);
       this.panel2.Controls.Add(this.label5);
       this.panel2.Location = new System.Drawing.Point(12, 84);
       this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(362, 207);
+      this.panel2.Size = new System.Drawing.Size(352, 234);
       this.panel2.TabIndex = 83;
+      // 
+      // newMeetingChooseParticipantName
+      // 
+      this.newMeetingChooseParticipantName.FormattingEnabled = true;
+      this.newMeetingChooseParticipantName.Location = new System.Drawing.Point(136, 118);
+      this.newMeetingChooseParticipantName.Name = "newMeetingChooseParticipantName";
+      this.newMeetingChooseParticipantName.Size = new System.Drawing.Size(100, 21);
+      this.newMeetingChooseParticipantName.TabIndex = 83;
+      this.newMeetingChooseParticipantName.SelectedIndexChanged += new System.EventHandler(this.newMeetingChooseParticipantName_SelectedIndexChanged);
+      // 
+      // label12
+      // 
+      this.label12.AutoSize = true;
+      this.label12.Location = new System.Drawing.Point(23, 121);
+      this.label12.Name = "label12";
+      this.label12.Size = new System.Drawing.Size(94, 13);
+      this.label12.TabIndex = 82;
+      this.label12.Text = "Choose Particpant";
       // 
       // Meeting_Initiator
       // 
@@ -425,15 +441,15 @@ namespace MeetingScheduler
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.Button backToMainMenuButton;
     private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.ComboBox comboBox3;
-    private System.Windows.Forms.ComboBox comboBox4;
+    private System.Windows.Forms.ComboBox newMeetingLocationDropdown;
+    private System.Windows.Forms.ComboBox newMeetingTimeslotDropdown;
     private System.Windows.Forms.Label label7;
     private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.ListBox listBox1;
+    private System.Windows.Forms.ListBox newMeetingParticipantList;
     private System.Windows.Forms.Label label6;
-    private System.Windows.Forms.Button button2;
-    private System.Windows.Forms.Button button3;
-    private System.Windows.Forms.Button button4;
+    private System.Windows.Forms.Button addNewParticipant;
+    private System.Windows.Forms.Button createNewMeetingBtn;
+    private System.Windows.Forms.Button removeSelectedParticipantFromNewMeetingBtn;
     private System.Windows.Forms.Button button1;
     private System.Windows.Forms.Button button5;
     private System.Windows.Forms.Button button6;
@@ -451,8 +467,10 @@ namespace MeetingScheduler
     private System.Windows.Forms.Button button8;
     private System.Windows.Forms.Button button11;
     private System.Windows.Forms.Label label11;
-    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.TextBox newMeetingMeetingName;
     private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.Panel panel2;
+    private System.Windows.Forms.ComboBox newMeetingChooseParticipantName;
+    private System.Windows.Forms.Label label12;
   }
 }

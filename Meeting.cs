@@ -8,7 +8,7 @@ namespace MeetingScheduler
 {
   class Meeting
   {
-   static private int noOfParticipants;
+    static private int noOfParticipants;
    public struct participant
     {
       public User p;
@@ -24,6 +24,9 @@ namespace MeetingScheduler
     private List<participant> participants;
     User meetingInitiator;
 
+    public Meeting()
+    {
+    }
     public Meeting(User initiator)
     {
       meetingInitiator = initiator;

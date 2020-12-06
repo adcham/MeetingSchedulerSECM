@@ -16,8 +16,8 @@ namespace MeetingScheduler
     public enum EmployeeType { systemAdmin = 0, equipmentKeeper = 1, meetingInitiator = 2, participant = 3 }
     private EmployeeType EmpType;
     private List<Meeting> meetingList;
-    private List<int> exclusionSet;
-    private List<int> preferenceSet;
+    public bool[] exclusionSet;
+    public bool[] preferenceSet;
 
     //default user constructor
     public User(string newName, EmployeeType empType)
@@ -27,18 +27,36 @@ namespace MeetingScheduler
       EmpType = empType;
 
       meetingList = new List<Meeting>();
-      exclusionSet = new List<int>();
-      preferenceSet = new List<int>();
+      exclusionSet = new bool[6];
+      preferenceSet = new bool[6];
       userList.Add(this);
     }
+    
+    public User()
+    {
+      meetingList = new List<Meeting>();
+      exclusionSet = new bool[6];
+      preferenceSet = new bool[6];
+    }
+
     public void addPreferenceSlot(int slot)
     {
-      this.preferenceSet.Add(slot);
+      this.preferenceSet[slot-1]=true;
+    }
+
+    public bool getPreferenceSlot(int slot)
+    {
+      return preferenceSet[slot - 1];
     }
 
     public void addExclusionSlot(int slot)
     {
-      this.exclusionSet.Add(slot);
+      this.exclusionSet[slot-1]=true;
+    }
+
+    public bool getExclusionSlot (int slot)
+    {
+      return exclusionSet[slot-1];
     }
 
     public void addMeeting(Meeting newMeeting)
@@ -54,5 +72,14 @@ namespace MeetingScheduler
       return this.name;
     }
 
+    public List<User> getUserList()
+    {
+      return userList;
+    }
+
+    public int getNoOfUsers()
+    {
+      return noOfUsers;
+    }
   }
 }

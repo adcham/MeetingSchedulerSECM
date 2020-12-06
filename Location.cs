@@ -15,6 +15,7 @@ namespace MeetingScheduler
     private string locationName;
     //private string locationAddress;
     private List<Equipment> availableEquipment;
+    private Meeting[] timeSlots  =  new Meeting[6];
 
     public Location(string name)
     {
@@ -154,5 +155,14 @@ namespace MeetingScheduler
       return locationList.ElementAt(index).checkIfMovable(equipmentName);
     }
 
+    public Meeting[] getTimeSlotsForThisLocation()
+    {
+      return this.timeSlots;
+    }
+
+    public Meeting[] getTimeSlotsForThisLocation(int index)
+    {
+      return locationList.ElementAt(index).getTimeSlotsForThisLocation();
+    }
   }
 }
