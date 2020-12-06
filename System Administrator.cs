@@ -12,7 +12,7 @@ namespace MeetingScheduler
 {
   public partial class System_Administrator : Form
   {
-    Location baseLocation = new Location("Base");
+    Location baseLocation = new Location();
     public System_Administrator()
     {
       InitializeComponent();
@@ -31,9 +31,8 @@ namespace MeetingScheduler
 
     private void button1_Click(object sender, EventArgs e)
     {
-      Location newLocation = new Location(addLocationNameTextbox.Text, addLocationAddressTextbox.Text);
+      Location newLocation = new Location(addLocationNameTextbox.Text);
       addLocationNameTextbox.Text = "";
-      addLocationAddressTextbox.Text = "";
       updateList();
     }
 
@@ -49,7 +48,7 @@ namespace MeetingScheduler
 
     private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
     {
-      locationListbox.MultiColumn = true;
+    //  locationListbox.MultiColumn = true;
     }
 
     private void button2_Click(object sender, EventArgs e)

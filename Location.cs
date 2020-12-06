@@ -10,60 +10,66 @@ namespace MeetingScheduler
   {
     static public List<Location> locationList = new List<Location>();
     private static int noOfLocations = 0;
+    private int noOfEquipment;
     private int locationID;
     private string locationName;
-    private string locationAddress;
+    //private string locationAddress;
     private List<Equipment> availableEquipment;
 
-    public Location(string name, string address)
+    public Location(string name)
     {
       locationID = noOfLocations;
       noOfLocations++;
 
       locationName = name;
-      locationAddress = address;
+      //  locationAddress = address;
 
       availableEquipment = new List<Equipment>();
+      noOfEquipment = 0;
 
       locationList.Add(this);
     }
 
-    public Location(string name)
+    public Location()
     {
-      locationName = name;
       availableEquipment = new List<Equipment>();
     }
 
     public void addEquipmentToLocation(Equipment newEquipment)
     {
       this.availableEquipment.Add(newEquipment);
+      noOfEquipment++;
+    }
+    public void addEquipmentToLocation(Equipment newEquipment,int indexOfLocation)
+    {
+      locationList.ElementAt(indexOfLocation).addEquipmentToLocation(newEquipment);
     }
 
     public void removeEquipmentFromLocation(string equipmentName)
     {
       availableEquipment.RemoveAt(findEquipmentIndex(equipmentName));
+      noOfEquipment--;
+    }
+
+    public void removeEquipmentFromLocation(string equipmentName, int locationLindex)
+    {
+      locationList.ElementAt(locationLindex).removeEquipmentFromLocation(equipmentName);
     }
 
     public void deleteLocation(string eName)
     {
       int foundLocationIndex = findLocationIndex(eName);
-      if (foundLocationIndex != -1)
-      {
-        locationList.RemoveAt(foundLocationIndex);
-      }
-      else
-      {
-        //code to say user was not found and therefore not removed.
-      }
+      locationList.RemoveAt(foundLocationIndex);
+      noOfLocations--;
     }
 
     public int findLocationIndex(string name)
     {
       int foundLocationIndex = 0;
       bool found = false;
-      while (!found && foundLocationIndex < locationList.Count() - 1)
+      while (!found && foundLocationIndex < noOfLocations)
       {
-        if (locationList.ElementAt(foundLocationIndex).locationName.Equals(name))
+        if (locationList.ElementAt(foundLocationIndex).locationName == name)
         {
           found = true;
         }
@@ -77,16 +83,16 @@ namespace MeetingScheduler
         foundLocationIndex = -1;
       }
       return foundLocationIndex;
-      
+
     }
 
     public int findEquipmentIndex(string name)
     {
       int foundEquipmentIndex = 0;
       bool found = false;
-      while (!found && foundEquipmentIndex < locationList.Count() - 1)
+      while (!found && foundEquipmentIndex < this.noOfEquipment)
       {
-        if (locationList.ElementAt(foundEquipmentIndex).locationName.Equals(name))
+        if (availableEquipment.ElementAt(foundEquipmentIndex).getName() ==  name)
         {
           found = true;
         }
@@ -103,6 +109,11 @@ namespace MeetingScheduler
 
     }
 
+    public int findEquipmentIndex(string name,int locationIndex)
+    {
+      return locationList.ElementAt(locationIndex).findEquipmentIndex(name);
+    }
+
     public List<Location> GetLocations()
     {
       return locationList;
@@ -113,8 +124,34 @@ namespace MeetingScheduler
       return noOfLocations;
     }
 
-    public string getName() {
+    public string getName()
+    {
       return this.locationName;
+    }
+
+    public List<Equipment> GetEquipment()
+    {
+      return this.availableEquipment;
+    }
+
+    public List<Equipment> GetEquipment(int index)
+    {
+      return locationList.ElementAt(index).GetEquipment();
+    }
+
+    public int getNoOfEquipmentAtLocationIndex(int indexOfLocation)
+    {
+      return locationList.ElementAt(indexOfLocation).noOfEquipment;
+    }
+
+    public bool checkIfMovable(string equipmentName)
+    {
+      int foundEquipmentIndex = findEquipmentIndex(equipmentName);
+      return availableEquipment.ElementAt(foundEquipmentIndex).movable;
+    }
+    public bool checkIfMovable(string equipmentName,int index)
+    {
+      return locationList.ElementAt(index).checkIfMovable(equipmentName);
     }
 
   }
