@@ -8,7 +8,7 @@ namespace MeetingScheduler
 {
   class Location
   {
-    static private List<Location> locationList = new List<Location>();
+    static public List<Location> locationList = new List<Location>();
     private static int noOfLocations = 0;
     private int locationID;
     private string locationName;
@@ -28,9 +28,15 @@ namespace MeetingScheduler
       locationList.Add(this);
     }
 
+    public Location(string name)
+    {
+      locationName = name;
+      availableEquipment = new List<Equipment>();
+    }
+
     public void addEquipmentToLocation(Equipment newEquipment)
     {
-      availableEquipment.Add(newEquipment);
+      this.availableEquipment.Add(newEquipment);
     }
 
     public void removeEquipmentFromLocation(string equipmentName)
@@ -95,6 +101,20 @@ namespace MeetingScheduler
       }
       return foundEquipmentIndex;
 
+    }
+
+    public List<Location> GetLocations()
+    {
+      return locationList;
+    }
+
+    public int getNoOfLocations()
+    {
+      return noOfLocations;
+    }
+
+    public string getName() {
+      return this.locationName;
     }
 
   }

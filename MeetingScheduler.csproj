@@ -115,6 +115,7 @@
     <EmbeddedResource Include="System Administrator.resx">
       <DependentUpon>System Administrator.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Location.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

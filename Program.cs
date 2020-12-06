@@ -15,6 +15,7 @@ namespace MeetingScheduler
     [STAThread]
     static void Main()
     {
+
       Meeting[,] MeetingSlots = new Meeting[6, 4];
 
       User testSysAdmin = new User("Mazen Omar", User.EmployeeType.systemAdmin);
@@ -60,20 +61,24 @@ namespace MeetingScheduler
       Equipment testEquipment2 = new Equipment("Whiteboard", true);
       Equipment testEquipment3 = new Equipment("Laptops", true);
 
-      Location testLocation = new Location("Room 1", "Sheffield Road");
+      Location testLocation = new Location("Room 1", "Room 1");
       testLocation.addEquipmentToLocation(testEquipment);
       testLocation.addEquipmentToLocation(testEquipment2);
       testLocation.addEquipmentToLocation(testEquipment3);
 
-      Location testLocation2 = new Location("Room 5", "Somewhere in Chesterfield");
+      Location testLocation2 = new Location("Room 5", "Room 1");
       testLocation2.addEquipmentToLocation(testEquipment);
       testLocation2.addEquipmentToLocation(testEquipment2);
       testLocation2.addEquipmentToLocation(testEquipment3);
 
+
+
       // logic for running the main menu
+
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
       Application.Run(new MainMenu());
+
     }
   }
 }
