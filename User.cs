@@ -81,5 +81,33 @@ namespace MeetingScheduler
     {
       return noOfUsers;
     }
+
+    public User getUserByName(string name)
+    {
+      return userList.ElementAt(findUserIndex(name));
+    }
+
+    public int findUserIndex(string name)
+    {
+      int foundUserIndex = 0;
+      bool found = false;
+      while (!found && foundUserIndex < noOfUsers)
+      {
+        if (userList.ElementAt(foundUserIndex).getName() == name)
+        {
+          found = true;
+        }
+        else
+        {
+          foundUserIndex++;
+        }
+      }
+      if (!found)
+      {
+        foundUserIndex = -1;
+      }
+      return foundUserIndex;
+
+    }
   }
 }

@@ -16,6 +16,8 @@ namespace MeetingScheduler
     Meeting baseMeeting = new Meeting();
     User baseParticipant = new User();
 
+    List<User> usersToAddToNewMeeting = new List<User>();
+
     public Meeting_Initiator()
     {
       InitializeComponent();
@@ -104,7 +106,8 @@ namespace MeetingScheduler
 
     private void newMeetingTimeslotDropdown_SelectedIndexChanged(object sender, EventArgs e)
     {
-      //implement populating participant list
+      usersToAddToNewMeeting.Clear();
+      newMeetingParticipantList.Items.Clear();
       newMeetingChooseParticipantName.Items.Clear();
       List<User> potentialParticipantList = baseParticipant.getUserList();
       int potentialParticipantListLength = baseParticipant.getNoOfUsers();
@@ -129,6 +132,19 @@ namespace MeetingScheduler
     private void addNewParticipant_Click(object sender, EventArgs e)
     {
       string participantToAddName = newMeetingChooseParticipantName.Text;
+      User newMeetingUser = baseParticipant.getUserByName(participantToAddName);
+      usersToAddToNewMeeting.Add(newMeetingUser);
+      newMeetingParticipantList.Items.Add(newMeetingUser.getName());
+
+      newMeetingChooseParticipantName.Text = "";
+      newMeetingChooseParticipantName.Items.Clear();
+      List<User> potentialParticipantList = baseParticipant.getUserList();
+
+      foreach (User u in potentialParticipantList)
+      {
+        if (!usersToAddToNewMeeting.Contains(u))
+          newMeetingChooseParticipantName.Items.Add(u.getName());
+      }
 
     }
   }
