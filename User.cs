@@ -109,5 +109,15 @@ namespace MeetingScheduler
       return foundUserIndex;
 
     }
+
+    public override string ToString()
+    {
+      return this.name;
+    }
+
+    public void removeExclusionSlot(int slot)
+    {
+      this.exclusionSet[slot] = false;
+    }
   }
 }

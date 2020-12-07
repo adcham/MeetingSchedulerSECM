@@ -55,7 +55,7 @@ namespace MeetingScheduler
 
     }
 
-    public Meeting(string mName,List<User> users, int timeSlot, int location)
+    public Meeting(string mName, List<User> users, int timeSlot, int location)
     {
       meetingInitiator = "Mehmet";
       this.meetingName = mName;
@@ -67,6 +67,7 @@ namespace MeetingScheduler
       foreach (User u in users)
       {
         participants.Add(new participant(u, false));
+        u.addExclusionSlot(timeSlot + 1);
       }
 
       listOfMeetings.ElementAt(location)[timeSlot] = this;
@@ -104,7 +105,7 @@ namespace MeetingScheduler
     {
       int foundIndex = 0;
       bool found = false;
-      while (!found && foundIndex < noOfParticipants - 1)
+      while (!found && foundIndex < noOfParticipants)
       {
         if (participants.ElementAt(foundIndex).p.getName().Equals(name))
         {
@@ -133,13 +134,23 @@ namespace MeetingScheduler
       return NOOFTIMESLOTS;
     }
 
-    public override string ToString() {
+    public override string ToString()
+    {
       return this.meetingName;
     }
 
     public List<participant> getParticipantList()
     {
       return participants;
+    }
+
+    public int getTimeSlot()
+    {
+      return this.timeSlot + 1;
+    }
+    public int getMeetingLocation()
+    {
+      return meetingLocation;
     }
   }
 }

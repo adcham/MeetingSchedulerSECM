@@ -91,6 +91,8 @@ namespace MeetingScheduler
       potentialParticipantsForTestMeeting.Add(testUser3);
       //add meeting to test
       Meeting testMeeting = new Meeting("testMeeting", potentialParticipantsForTestMeeting, 0, 1);
+      testMeeting.changeImportance("Adam", true);
+
 
 
 
