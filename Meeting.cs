@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,12 @@ namespace MeetingScheduler
       public override string ToString()
       {
         return this.p.getName();
+      }
+
+      public void setUnimportant()
+      {
+        Debug.WriteLine("Setting participant important to" + false);
+        this.important = false;
       }
     }
 
@@ -88,7 +95,7 @@ namespace MeetingScheduler
       }
       else
       {
-        //code to say user was not found and therefore not removed.
+        
       }
     }
     public void changeImportance(string name, bool importance)
@@ -101,6 +108,7 @@ namespace MeetingScheduler
       }
 
     }
+    
     public int findParticipantIndex(string name)
     {
       int foundIndex = 0;

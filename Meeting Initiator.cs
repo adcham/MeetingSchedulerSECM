@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -257,9 +258,10 @@ namespace MeetingScheduler
       //logic to add each availble meeting location for the time slot
       List<Meeting[]> meetingList = baseMeeting.getMeetingList();
 
-      for (int i = 0; i < meeting.getNoOfTimeSlots(); i++) {
+      for (int i = 0; i < meeting.getNoOfTimeSlots(); i++)
+      {
         if (meetingList.ElementAt(locationID)[i] == null)
-          editMeetingChangeTimeSlotDropdown.Items.Add("Slot " + (i+1).ToString());
+          editMeetingChangeTimeSlotDropdown.Items.Add("Slot " + (i + 1).ToString());
       }
 
     }
@@ -273,7 +275,7 @@ namespace MeetingScheduler
 
       currentLocationLabel.Text = menuLocations.ElementAt(Location).getName();
 
-      for (int i = 1; i < baseLocation.getNoOfLocations()-1; i++)
+      for (int i = 1; i < baseLocation.getNoOfLocations() - 1; i++)
       {
         if (meetingList.ElementAt(i)[timeSlot] == null)
           editMeetingChangeLocationDropdown.Items.Add(menuLocations.ElementAt(i).getName());
@@ -290,7 +292,8 @@ namespace MeetingScheduler
       Meeting.participant tempParticipant = (Meeting.participant)editMeetingParticipantList.SelectedItem;
       int i = 0;
       bool deleted = false;
-      int timeSlot = (int)Char.GetNumericValue(currentLocationLabel.Text[5]);
+      int timeSlot = (int)Char.GetNumericValue(currentTimeSlotLabel.Text[5]) -1;
+
       while (i < currentMeetingParticipants.Count() && !deleted)
       {
         if (tempParticipant.p.getName() == currentMeetingParticipants.ElementAt(i).p.getName())
@@ -332,15 +335,25 @@ namespace MeetingScheduler
       //filter out any that have current timeslot as exclusion
       //add remaining users to the dropdown list
       editMeetingAddParticipantDropdown.Items.Clear();
+      int timeSlot = -1;
+
+      if (editMeetingChangeTimeSlotDropdown.Text == "")
+      {
+        timeSlot = meeting.getTimeSlot();
+      }
+      else
+      {
+        timeSlot = (int)Char.GetNumericValue(editMeetingChangeTimeSlotDropdown.Text[5]);
+      }
 
       List<User> listOfAllUsers = baseParticipant.getUserList();
 
-      foreach(User u in listOfAllUsers)
+      foreach (User u in listOfAllUsers)
       {
-        if (!u.getExclusionSlot(meeting.getTimeSlot()))
+        if (!u.getExclusionSlot(timeSlot))
         {
-          bool participantIsAlreadyInMeeting = !(meeting.getParticipantList().Contains(new Meeting.participant(u, false)) || meeting.getParticipantList().Contains(new Meeting.participant(u, true)));
-          if (participantIsAlreadyInMeeting)
+          bool participantIsNotAlreadyInMeeting = !(meeting.getParticipantList().Contains(new Meeting.participant(u, false)) || meeting.getParticipantList().Contains(new Meeting.participant(u, true)));
+          if (participantIsNotAlreadyInMeeting)
             editMeetingAddParticipantDropdown.Items.Add(u);
         }
       }
@@ -356,28 +369,71 @@ namespace MeetingScheduler
     private void button1_Click_1(object sender, EventArgs e)
     {
       //make selected important participant unimportant
-      Meeting.participant tempParticipant = (Meeting.participant)editMeetingImportantParticipantList.SelectedItem;
+      changeEditMeetingSelectedUserImportance(false, editMeetingImportantParticipantList);
     }
 
     private void button8_Click(object sender, EventArgs e)
     {
-      //make selected participant important
-      Meeting.participant tempParticipant = (Meeting.participant)editMeetingParticipantList.SelectedItem;
+      changeEditMeetingSelectedUserImportance(true, editMeetingParticipantList);
 
+    }
 
+    private void changeEditMeetingSelectedUserImportance(bool importance, ListBox participantList)
+    {
+      Meeting currentlySelectedMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
+      List<Meeting.participant> currentMeetingParticipants = currentlySelectedMeeting.getParticipantList();
+      int participantIndex = currentlySelectedMeeting.findParticipantIndex(participantList.SelectedItem.ToString());
+      User tempuser = currentMeetingParticipants.ElementAt(participantIndex).p;
+      currentMeetingParticipants.RemoveAt(participantIndex);
+      currentlySelectedMeeting.addParticipant(tempuser, importance);
+
+      updateEditMeetingParticipantLists(currentlySelectedMeeting);
     }
 
     private void button11_Click(object sender, EventArgs e)
     {
-      //delete meeting button
+      Meeting currentlySelectedMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
+      List<Meeting[]> listOfMeetings = baseMeeting.getMeetingList();
+
       string message = "Are you sure you want to delete meeting?";
       string title = "Delete Meeting";
       MessageBoxButtons buttons = MessageBoxButtons.YesNo;
       DialogResult result = MessageBox.Show(message, title, buttons);
       if (result == DialogResult.Yes)
       {
-        //delete meeting
+        listOfMeetings.ElementAt(currentlySelectedMeeting.getMeetingLocation())[currentlySelectedMeeting.getTimeSlot()] = null;
+
+        editMeetingAddParticipantDropdown.Text = "";
+        editMeetingChangeLocationDropdown.Text = "";
+        editMeetingImportantParticipantList.Text = "";
+        editMeetingListChooseMeetingDropdown.Text = "";
+
+        editMeetingImportantParticipantList.Items.Clear();
+        editMeetingParticipantList.Items.Clear();
+
+        updateEditMeetingDropdown();
       }
+    }
+
+    private void editMeetingAddNewParticipantButton_Click(object sender, EventArgs e)
+    {
+      //add participant
+      Meeting currentlySelectedMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
+      User currentUser = (User)editMeetingAddParticipantDropdown.SelectedItem;
+      int timeSlot = (int)Char.GetNumericValue(currentTimeSlotLabel.Text[5]);
+      currentlySelectedMeeting.addParticipant(currentUser, false);
+      currentUser.addExclusionSlot(timeSlot);
+      //need to add this time slot to the (User)editMeetingAddParticipantDropdown exlcusion set
+
+      editMeetingAddParticipantDropdown.Text = "";
+      updateEditMeetingParticipantLists(currentlySelectedMeeting);
+      updateEditMeetingAddNewParticipantDropdown(currentlySelectedMeeting);
+
+    }
+
+    private void button5_Click(object sender, EventArgs e)
+    {
+      //save meeting changes
     }
   }
 }

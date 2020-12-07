@@ -207,6 +207,7 @@ namespace MeetingScheduler
       this.button5.TabIndex = 69;
       this.button5.Text = "Save Meeting Changes";
       this.button5.UseVisualStyleBackColor = true;
+      this.button5.Click += new System.EventHandler(this.button5_Click);
       // 
       // editMeetingAddNewParticipantButton
       // 
@@ -216,6 +217,7 @@ namespace MeetingScheduler
       this.editMeetingAddNewParticipantButton.TabIndex = 68;
       this.editMeetingAddNewParticipantButton.Text = "Add new participant";
       this.editMeetingAddNewParticipantButton.UseVisualStyleBackColor = true;
+      this.editMeetingAddNewParticipantButton.Click += new System.EventHandler(this.editMeetingAddNewParticipantButton_Click);
       // 
       // label3
       // 
