@@ -31,6 +31,7 @@ namespace MeetingScheduler
     {
       this.backToMainMenuButton = new System.Windows.Forms.Button();
       this.panel2 = new System.Windows.Forms.Panel();
+      this.button3 = new System.Windows.Forms.Button();
       this.button1 = new System.Windows.Forms.Button();
       this.checkBox1 = new System.Windows.Forms.CheckBox();
       this.label4 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@ namespace MeetingScheduler
       this.label2 = new System.Windows.Forms.Label();
       this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
-      this.button3 = new System.Windows.Forms.Button();
       this.panel2.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -78,8 +78,17 @@ namespace MeetingScheduler
       this.panel2.Controls.Add(this.comboBox1);
       this.panel2.Location = new System.Drawing.Point(12, 63);
       this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(407, 239);
+      this.panel2.Size = new System.Drawing.Size(493, 239);
       this.panel2.TabIndex = 88;
+      // 
+      // button3
+      // 
+      this.button3.Location = new System.Drawing.Point(15, 139);
+      this.button3.Name = "button3";
+      this.button3.Size = new System.Drawing.Size(115, 41);
+      this.button3.TabIndex = 98;
+      this.button3.Text = "Suggest Meeting Location";
+      this.button3.UseVisualStyleBackColor = true;
       // 
       // button1
       // 
@@ -217,20 +226,11 @@ namespace MeetingScheduler
       this.label1.TabIndex = 87;
       this.label1.Text = "Important Participant View";
       // 
-      // button3
-      // 
-      this.button3.Location = new System.Drawing.Point(15, 139);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(115, 41);
-      this.button3.TabIndex = 98;
-      this.button3.Text = "Suggest Meeting Location";
-      this.button3.UseVisualStyleBackColor = true;
-      // 
       // Important_Participant
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(434, 338);
+      this.ClientSize = new System.Drawing.Size(515, 338);
       this.Controls.Add(this.backToMainMenuButton);
       this.Controls.Add(this.panel2);
       this.Controls.Add(this.label1);

@@ -178,5 +178,21 @@ namespace MeetingScheduler
     {
       return locationList.ElementAt(index).getTimeSlotsForThisLocation();
     }
+
+    public int getLocationIndexByString(string locationName)
+    {
+      bool searching = true;
+      int counter = 0;
+      while (searching)
+      {
+        if (locationList.ElementAt(counter).getName() == locationName)
+          searching = false;
+        else
+        counter++;
+      }
+
+      //storage is at 0
+      return counter-1;
+    }
   }
 }

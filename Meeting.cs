@@ -79,6 +79,27 @@ namespace MeetingScheduler
 
       listOfMeetings.ElementAt(location)[timeSlot] = this;
     }
+    ~Meeting() { }
+
+    public static void deleteMeeting(int timeslot,int location)
+    {
+      Meeting[] tempMeetingArray  =  new Meeting[NOOFTIMESLOTS];
+      for (int i = 0; i < NOOFTIMESLOTS; i++)
+      {
+        if (i != timeslot)
+        {
+          tempMeetingArray[i]  =  listOfMeetings.ElementAt(location)[i];
+        }
+      }
+
+      listOfMeetings.RemoveAt(location);
+      listOfMeetings.Insert(location, tempMeetingArray);
+      
+
+
+      //Meeting tempMeeting = listOfMeetings.ElementAt(location)[timeslot];
+      //tempMeeting = null;
+    }
 
     public void addParticipant(User participant, bool important)
     {
@@ -160,5 +181,23 @@ namespace MeetingScheduler
     {
       return meetingLocation;
     }
+
+    public void changeLocation(int location)
+    {
+      this.meetingLocation  =  location;
+    }
+
+    public void changeTimeSlot(int timeSlot, int oldTimeSlot)
+    {
+      this.timeSlot = timeSlot;
+
+      foreach(participant pToChangeExclusionsFor in this.participants)
+      {
+        pToChangeExclusionsFor.p.removeExclusionSlot(oldTimeSlot-1);
+        pToChangeExclusionsFor.p.addExclusionSlot(timeSlot);
+      }
+
+    }
+
   }
 }
