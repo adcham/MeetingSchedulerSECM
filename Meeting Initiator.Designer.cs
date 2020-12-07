@@ -45,16 +45,16 @@ namespace MeetingScheduler
       this.button5 = new System.Windows.Forms.Button();
       this.button6 = new System.Windows.Forms.Button();
       this.label3 = new System.Windows.Forms.Label();
-      this.listBox2 = new System.Windows.Forms.ListBox();
+      this.editMeetingParticipantList = new System.Windows.Forms.ListBox();
       this.label4 = new System.Windows.Forms.Label();
-      this.comboBox1 = new System.Windows.Forms.ComboBox();
-      this.comboBox2 = new System.Windows.Forms.ComboBox();
+      this.editMeetingChangeLocationDropdown = new System.Windows.Forms.ComboBox();
+      this.editMeetingChangeTimeSlotDropdown = new System.Windows.Forms.ComboBox();
       this.label8 = new System.Windows.Forms.Label();
       this.label9 = new System.Windows.Forms.Label();
-      this.comboBox5 = new System.Windows.Forms.ComboBox();
+      this.editMeetingListChooseMeetingDropdown = new System.Windows.Forms.ComboBox();
       this.button7 = new System.Windows.Forms.Button();
       this.label10 = new System.Windows.Forms.Label();
-      this.listBox3 = new System.Windows.Forms.ListBox();
+      this.editMeetingImportantParticipantList = new System.Windows.Forms.ListBox();
       this.button8 = new System.Windows.Forms.Button();
       this.button11 = new System.Windows.Forms.Button();
       this.label11 = new System.Windows.Forms.Label();
@@ -141,6 +141,7 @@ namespace MeetingScheduler
       this.newMeetingParticipantList.Name = "newMeetingParticipantList";
       this.newMeetingParticipantList.Size = new System.Drawing.Size(100, 134);
       this.newMeetingParticipantList.TabIndex = 52;
+      this.newMeetingParticipantList.SelectedIndexChanged += new System.EventHandler(this.newMeetingParticipantList_SelectedIndexChanged);
       // 
       // label6
       // 
@@ -180,6 +181,7 @@ namespace MeetingScheduler
       this.removeSelectedParticipantFromNewMeetingBtn.TabIndex = 60;
       this.removeSelectedParticipantFromNewMeetingBtn.Text = "Remove selected participant";
       this.removeSelectedParticipantFromNewMeetingBtn.UseVisualStyleBackColor = true;
+      this.removeSelectedParticipantFromNewMeetingBtn.Click += new System.EventHandler(this.removeSelectedParticipantFromNewMeetingBtn_Click);
       // 
       // button1
       // 
@@ -217,10 +219,10 @@ namespace MeetingScheduler
       this.label3.TabIndex = 67;
       this.label3.Text = "Participants";
       // 
-      // listBox2
+      // editMeetingParticipantList
       // 
-      this.listBox2.FormattingEnabled = true;
-      this.listBox2.Items.AddRange(new object[] {
+      this.editMeetingParticipantList.FormattingEnabled = true;
+      this.editMeetingParticipantList.Items.AddRange(new object[] {
             "Tom",
             "Dick",
             "Harry",
@@ -229,10 +231,10 @@ namespace MeetingScheduler
             "Adam",
             "Mazen",
             "Maxwel"});
-      this.listBox2.Location = new System.Drawing.Point(237, 67);
-      this.listBox2.Name = "listBox2";
-      this.listBox2.Size = new System.Drawing.Size(100, 95);
-      this.listBox2.TabIndex = 66;
+      this.editMeetingParticipantList.Location = new System.Drawing.Point(237, 67);
+      this.editMeetingParticipantList.Name = "editMeetingParticipantList";
+      this.editMeetingParticipantList.Size = new System.Drawing.Size(100, 95);
+      this.editMeetingParticipantList.TabIndex = 66;
       // 
       // label4
       // 
@@ -243,21 +245,21 @@ namespace MeetingScheduler
       this.label4.TabIndex = 65;
       this.label4.Text = "Change Location";
       // 
-      // comboBox1
+      // editMeetingChangeLocationDropdown
       // 
-      this.comboBox1.FormattingEnabled = true;
-      this.comboBox1.Location = new System.Drawing.Point(131, 67);
-      this.comboBox1.Name = "comboBox1";
-      this.comboBox1.Size = new System.Drawing.Size(100, 21);
-      this.comboBox1.TabIndex = 64;
+      this.editMeetingChangeLocationDropdown.FormattingEnabled = true;
+      this.editMeetingChangeLocationDropdown.Location = new System.Drawing.Point(131, 67);
+      this.editMeetingChangeLocationDropdown.Name = "editMeetingChangeLocationDropdown";
+      this.editMeetingChangeLocationDropdown.Size = new System.Drawing.Size(100, 21);
+      this.editMeetingChangeLocationDropdown.TabIndex = 64;
       // 
-      // comboBox2
+      // editMeetingChangeTimeSlotDropdown
       // 
-      this.comboBox2.FormattingEnabled = true;
-      this.comboBox2.Location = new System.Drawing.Point(131, 94);
-      this.comboBox2.Name = "comboBox2";
-      this.comboBox2.Size = new System.Drawing.Size(100, 21);
-      this.comboBox2.TabIndex = 63;
+      this.editMeetingChangeTimeSlotDropdown.FormattingEnabled = true;
+      this.editMeetingChangeTimeSlotDropdown.Location = new System.Drawing.Point(131, 94);
+      this.editMeetingChangeTimeSlotDropdown.Name = "editMeetingChangeTimeSlotDropdown";
+      this.editMeetingChangeTimeSlotDropdown.Size = new System.Drawing.Size(100, 21);
+      this.editMeetingChangeTimeSlotDropdown.TabIndex = 63;
       // 
       // label8
       // 
@@ -277,13 +279,14 @@ namespace MeetingScheduler
       this.label9.TabIndex = 61;
       this.label9.Text = "Edit Meeting";
       // 
-      // comboBox5
+      // editMeetingListChooseMeetingDropdown
       // 
-      this.comboBox5.FormattingEnabled = true;
-      this.comboBox5.Location = new System.Drawing.Point(26, 27);
-      this.comboBox5.Name = "comboBox5";
-      this.comboBox5.Size = new System.Drawing.Size(421, 21);
-      this.comboBox5.TabIndex = 71;
+      this.editMeetingListChooseMeetingDropdown.FormattingEnabled = true;
+      this.editMeetingListChooseMeetingDropdown.Location = new System.Drawing.Point(26, 27);
+      this.editMeetingListChooseMeetingDropdown.Name = "editMeetingListChooseMeetingDropdown";
+      this.editMeetingListChooseMeetingDropdown.Size = new System.Drawing.Size(421, 21);
+      this.editMeetingListChooseMeetingDropdown.TabIndex = 71;
+      this.editMeetingListChooseMeetingDropdown.SelectedIndexChanged += new System.EventHandler(this.editMeetingListChooseMeetingDropdown_SelectedIndexChanged);
       // 
       // button7
       // 
@@ -303,15 +306,15 @@ namespace MeetingScheduler
       this.label10.TabIndex = 74;
       this.label10.Text = "Important Particpants";
       // 
-      // listBox3
+      // editMeetingImportantParticipantList
       // 
-      this.listBox3.FormattingEnabled = true;
-      this.listBox3.Items.AddRange(new object[] {
+      this.editMeetingImportantParticipantList.FormattingEnabled = true;
+      this.editMeetingImportantParticipantList.Items.AddRange(new object[] {
             "Mehmet"});
-      this.listBox3.Location = new System.Drawing.Point(343, 67);
-      this.listBox3.Name = "listBox3";
-      this.listBox3.Size = new System.Drawing.Size(100, 95);
-      this.listBox3.TabIndex = 73;
+      this.editMeetingImportantParticipantList.Location = new System.Drawing.Point(343, 67);
+      this.editMeetingImportantParticipantList.Name = "editMeetingImportantParticipantList";
+      this.editMeetingImportantParticipantList.Size = new System.Drawing.Size(100, 95);
+      this.editMeetingImportantParticipantList.TabIndex = 73;
       // 
       // button8
       // 
@@ -358,17 +361,17 @@ namespace MeetingScheduler
       this.panel1.Controls.Add(this.button11);
       this.panel1.Controls.Add(this.button8);
       this.panel1.Controls.Add(this.label10);
-      this.panel1.Controls.Add(this.listBox3);
+      this.panel1.Controls.Add(this.editMeetingImportantParticipantList);
       this.panel1.Controls.Add(this.button7);
-      this.panel1.Controls.Add(this.comboBox5);
+      this.panel1.Controls.Add(this.editMeetingListChooseMeetingDropdown);
       this.panel1.Controls.Add(this.button1);
       this.panel1.Controls.Add(this.button5);
       this.panel1.Controls.Add(this.button6);
       this.panel1.Controls.Add(this.label3);
-      this.panel1.Controls.Add(this.listBox2);
+      this.panel1.Controls.Add(this.editMeetingParticipantList);
       this.panel1.Controls.Add(this.label4);
-      this.panel1.Controls.Add(this.comboBox1);
-      this.panel1.Controls.Add(this.comboBox2);
+      this.panel1.Controls.Add(this.editMeetingChangeLocationDropdown);
+      this.panel1.Controls.Add(this.editMeetingChangeTimeSlotDropdown);
       this.panel1.Controls.Add(this.label8);
       this.panel1.Controls.Add(this.label9);
       this.panel1.Location = new System.Drawing.Point(413, 84);
@@ -454,16 +457,16 @@ namespace MeetingScheduler
     private System.Windows.Forms.Button button5;
     private System.Windows.Forms.Button button6;
     private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.ListBox listBox2;
+    private System.Windows.Forms.ListBox editMeetingParticipantList;
     private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.ComboBox comboBox1;
-    private System.Windows.Forms.ComboBox comboBox2;
+    private System.Windows.Forms.ComboBox editMeetingChangeLocationDropdown;
+    private System.Windows.Forms.ComboBox editMeetingChangeTimeSlotDropdown;
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.Label label9;
-    private System.Windows.Forms.ComboBox comboBox5;
+    private System.Windows.Forms.ComboBox editMeetingListChooseMeetingDropdown;
     private System.Windows.Forms.Button button7;
     private System.Windows.Forms.Label label10;
-    private System.Windows.Forms.ListBox listBox3;
+    private System.Windows.Forms.ListBox editMeetingImportantParticipantList;
     private System.Windows.Forms.Button button8;
     private System.Windows.Forms.Button button11;
     private System.Windows.Forms.Label label11;

@@ -16,20 +16,27 @@ namespace MeetingScheduler
     //private string locationAddress;
     private List<Equipment> availableEquipment;
     private Meeting[] timeSlots  =  new Meeting[6];
+    private const int NOOFTIMESLOTS = 6;
+
 
     public Location(string name)
     {
-      locationID = noOfLocations;
       noOfLocations++;
+      if (!(name.Equals("Storage"))) {
+        locationID = noOfLocations;
+        Meeting baseMeeting2 = new Meeting();
+        List<Meeting[]> listOfMeetings = baseMeeting2.getMeetingList();
+        listOfMeetings.Add(new Meeting[NOOFTIMESLOTS]);
+      }
 
       locationName = name;
-      //  locationAddress = address;
 
       availableEquipment = new List<Equipment>();
       noOfEquipment = 0;
 
       locationList.Add(this);
     }
+
 
     public Location()
     {
@@ -118,6 +125,13 @@ namespace MeetingScheduler
     public List<Location> GetLocations()
     {
       return locationList;
+    }
+
+    public List<Location> GetLocationsWithoutStorage()
+    {
+      List<Location> templocationMinusStorage = locationList;
+      templocationMinusStorage.RemoveAt(0);
+      return templocationMinusStorage;
     }
 
     public int getNoOfLocations()

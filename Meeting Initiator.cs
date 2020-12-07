@@ -16,6 +16,7 @@ namespace MeetingScheduler
     Meeting baseMeeting = new Meeting();
     User baseParticipant = new User();
 
+    //users to ADD to a meeting
     List<User> usersToAddToNewMeeting = new List<User>();
 
     public Meeting_Initiator()
@@ -30,7 +31,7 @@ namespace MeetingScheduler
           newMeetingLocationDropdown.Items.Add(menuLocations.ElementAt(i).getName());
       }
 
-
+      updateEditMeetingDropdown();
     }
 
     private void Meeting_Initiator_Load(object sender, EventArgs e)
@@ -70,6 +71,38 @@ namespace MeetingScheduler
 
     private void button3_Click(object sender, EventArgs e)
     {
+      string currentlySelectedLocation = newMeetingLocationDropdown.Text;
+      int indexOfLocation = baseLocation.findLocationIndex(currentlySelectedLocation) - 1;
+      int currentTimeSlot = (int)Char.GetNumericValue(newMeetingTimeslotDropdown.Text[5]) - 1;
+      string meetingName = newMeetingMeetingName.Text;
+      Meeting newMeeting = new Meeting(meetingName, usersToAddToNewMeeting, currentTimeSlot, indexOfLocation);
+      clearNewMeetingFormData();
+      updateEditMeetingDropdown();
+    }
+
+    private void clearNewMeetingFormData()
+    {
+      newMeetingMeetingName.Text = "";
+      newMeetingLocationDropdown.Text = "";
+      newMeetingTimeslotDropdown.Text = "";
+      newMeetingChooseParticipantName.Text = "";
+      newMeetingChooseParticipantName.Items.Clear();
+      newMeetingParticipantList.Items.Clear();
+    }
+
+    private void updateEditMeetingDropdown()
+    {
+      List<Meeting[]> listOfMeetings = baseMeeting.getMeetingList();
+      foreach (Meeting[] a in listOfMeetings)
+      {
+        for (int i = 0; i < baseMeeting.getNoOfTimeSlots(); i++)
+        {
+          if (a[i] != null)
+          {
+            editMeetingListChooseMeetingDropdown.Items.Add(a[i]);
+          }
+        }
+      }
 
     }
 
@@ -136,6 +169,25 @@ namespace MeetingScheduler
       usersToAddToNewMeeting.Add(newMeetingUser);
       newMeetingParticipantList.Items.Add(newMeetingUser.getName());
 
+      updatePotentialParticipantDropdown();
+
+    }
+
+    private void removeSelectedParticipantFromNewMeetingBtn_Click(object sender, EventArgs e)
+    {
+      int tempUserIndex = findSelectedParticipantObjectIndex(usersToAddToNewMeeting, newMeetingParticipantList);
+      usersToAddToNewMeeting.RemoveAt(tempUserIndex);
+      updatePotentialParticipantDropdown();
+      newMeetingParticipantList.Items.RemoveAt(tempUserIndex);
+    }
+
+    private void newMeetingParticipantList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void updatePotentialParticipantDropdown()
+    {
       newMeetingChooseParticipantName.Text = "";
       newMeetingChooseParticipantName.Items.Clear();
       List<User> potentialParticipantList = baseParticipant.getUserList();
@@ -144,6 +196,50 @@ namespace MeetingScheduler
       {
         if (!usersToAddToNewMeeting.Contains(u))
           newMeetingChooseParticipantName.Items.Add(u.getName());
+      }
+    }
+
+    private int findSelectedParticipantObjectIndex(List<User> userList, ListBox listBoxOfParticipants)
+    {
+      string userToFindIndexFor = listBoxOfParticipants.GetItemText(listBoxOfParticipants.SelectedItem);
+
+      int counter = 0;
+      bool found = false;
+      while (!found && counter < userList.Count)
+      {
+        if (userList.ElementAt(counter).getName() == userToFindIndexFor)
+        {
+          found = true;
+        }
+        else
+        {
+          counter++;
+        }
+      }
+
+      return counter;
+    }
+
+    private void editMeetingListChooseMeetingDropdown_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      Meeting currentlySelectedMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
+      updateEditMeetingParticipantLists(currentlySelectedMeeting);
+      //update editMeetingChangeLocationDropdown
+      //update editMeetingChangeTimeSlotDropdown
+    }
+
+    private void updateEditMeetingParticipantLists(Meeting meeting)
+    {
+      foreach (Meeting.participant p in meeting.getParticipantList())
+      {
+        if (p.getImportance())
+        {
+          editMeetingImportantParticipantList.Items.Add(p);
+        }
+        else
+        {
+          editMeetingParticipantList.Items.Add(p);
+        }
       }
 
     }

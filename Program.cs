@@ -26,7 +26,6 @@ namespace MeetingScheduler
       User testUser2 = new User("Maxwel", User.EmployeeType.participant);
       User testUser3 = new User("Adam", User.EmployeeType.participant);
 
-
       testUser1.addPreferenceSlot(1);
       testUser1.addPreferenceSlot(2);
       testUser1.addPreferenceSlot(3);
@@ -49,31 +48,13 @@ namespace MeetingScheduler
       testUser3.addExclusionSlot(6);
 
       //adding test meeting
-      Meeting testMeeting = new Meeting(currentUser);
 
-      testMeeting.addParticipant(testUser1, false);
-      testMeeting.addParticipant(testUser2, true);
-      testMeeting.addParticipant(testUser3, false);
-
-      testMeeting.changeImportance("Maxwel", false);
-      testMeeting.removeParticipant("Adam");
 
       Equipment testEquipment = new Equipment("Projector", false);
       Equipment testEquipment2 = new Equipment("Whiteboard", true);
       Equipment testEquipment3 = new Equipment("Laptops", true);
       Equipment testEquipment4 = new Equipment("unique equipment", true);
       Equipment testEquipment5 = new Equipment("Projector", false);
-
-      Location testLocation = new Location("Room 1");
-      testLocation.addEquipmentToLocation(testEquipment);
-      testLocation.addEquipmentToLocation(testEquipment2);
-      testLocation.addEquipmentToLocation(testEquipment3);
-      testLocation.addEquipmentToLocation(testEquipment4);
-      testLocation.addEquipmentToLocation(testEquipment5);
-
-      Location testLocation2 = new Location("Room 5");
-      testLocation2.addEquipmentToLocation(testEquipment);
-      testLocation2.addEquipmentToLocation(testEquipment3);
 
       Location equipmentStorageLocation = new Location("Storage");
       Equipment storageEquipment1 = new Equipment("Stored Equipment A", true);
@@ -92,6 +73,26 @@ namespace MeetingScheduler
       equipmentStorageLocation.addEquipmentToLocation(storageEquipment6);
       equipmentStorageLocation.addEquipmentToLocation(storageEquipment7);
       equipmentStorageLocation.addEquipmentToLocation(storageEquipment8);
+
+      Location testLocation = new Location("Room 1");
+      testLocation.addEquipmentToLocation(testEquipment);
+      testLocation.addEquipmentToLocation(testEquipment2);
+      testLocation.addEquipmentToLocation(testEquipment3);
+      testLocation.addEquipmentToLocation(testEquipment4);
+      testLocation.addEquipmentToLocation(testEquipment5);
+
+      Location testLocation2 = new Location("Room 5");
+      testLocation2.addEquipmentToLocation(testEquipment);
+      testLocation2.addEquipmentToLocation(testEquipment3);
+
+      List<User> potentialParticipantsForTestMeeting = new List<User>();
+      potentialParticipantsForTestMeeting.Add(testUser1);
+      potentialParticipantsForTestMeeting.Add(testUser2);
+      potentialParticipantsForTestMeeting.Add(testUser3);
+      //add meeting to test
+      Meeting testMeeting = new Meeting("testMeeting", potentialParticipantsForTestMeeting, 0, 1);
+
+
 
 
       // logic for running the main menu
