@@ -14,7 +14,7 @@ namespace MeetingScheduler
     public static List<Meeting[]> listOfMeetings = new List<Meeting[]>();
     public const int NOOFTIMESLOTS = 6;
 
-    static private int noOfParticipants;
+    private int noOfParticipants;
 
     public string meetingName;
     public int meetingLocation;
@@ -47,6 +47,11 @@ namespace MeetingScheduler
         Debug.WriteLine("Setting participant important to" + false);
         this.important = false;
       }
+
+      public User getUser()
+      {
+        return this.p;
+      }
     }
 
     private List<participant> participants;
@@ -77,6 +82,7 @@ namespace MeetingScheduler
       {
         participants.Add(new participant(u, false));
         u.addExclusionSlot(timeSlot + 1);
+                u.addMeeting(this);
       }
 
       listOfMeetings.ElementAt(location)[timeSlot] = this;
@@ -139,10 +145,16 @@ namespace MeetingScheduler
           tempMeetingArray[i]  =  listOfMeetings.ElementAt(location)[i];
         }
       }
-
+      List<Meeting.participant> participantList = listOfMeetings.ElementAt(location)[timeslot].getParticipantList();
+      for (int j = 0; j < listOfMeetings.ElementAt(location)[timeslot].noOfParticipants; j++)
+      {
+        participantList.ElementAt(j).p.removeMeeting(listOfMeetings.ElementAt(location)[timeslot]);
+        participantList.ElementAt(j).p.removeExclusionSlot(timeslot);
+      }
       listOfMeetings.RemoveAt(location);
       listOfMeetings.Insert(location, tempMeetingArray);
       
+
 
 
       //Meeting tempMeeting = listOfMeetings.ElementAt(location)[timeslot];

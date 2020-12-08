@@ -11,6 +11,7 @@ namespace MeetingScheduler
   {
     private static int noOfUsers = 0;
     private static List<User> userList = new List<User>();
+
     private int userID;
     private String name;
     public enum EmployeeType { systemAdmin = 0, equipmentKeeper = 1, meetingInitiator = 2, participant = 3 }
@@ -39,6 +40,10 @@ namespace MeetingScheduler
       preferenceSet = new bool[6];
     }
 
+    public static List<User> getUserLists() {
+      return userList;
+    }
+
     public void addPreferenceSlot(int slot)
     {
       this.preferenceSet[slot-1]=true;
@@ -57,14 +62,6 @@ namespace MeetingScheduler
     public bool getExclusionSlot (int slot)
     {
       return exclusionSet[slot-1];
-    }
-
-    public void addMeeting(Meeting newMeeting)
-    {
-      this.meetingList.Add(newMeeting);
-
-      //add meeting to exlusion set (need to add correct logic here)
-      //this.exclustionSet.Add(newMeeting.slot);
     }
 
     public string getName()
@@ -118,6 +115,21 @@ namespace MeetingScheduler
     public void removeExclusionSlot(int slot)
     {
       this.exclusionSet[slot] = false;
+    }
+
+    public void addMeeting(Meeting meetingToAdd)
+    {
+      this.meetingList.Add(meetingToAdd);
+    }
+
+    public void removeMeeting(Meeting meetingToRemove)
+    {
+      this.meetingList.Remove(meetingToRemove);
+    }
+
+    public List<Meeting> getMeetings()
+    {
+      return this.meetingList;
     }
   }
 }

@@ -157,6 +157,7 @@ namespace MeetingScheduler
       List<User> potentialParticipantList = baseParticipant.getUserList();
       int potentialParticipantListLength = baseParticipant.getNoOfUsers();
       int currentTimeSlot;
+      int counterOfParticipantsInString = 0;
       if (newMeeting)
       {
         currentTimeSlot = (int)Char.GetNumericValue(newMeetingTimeslotDropdown.Text[5]);
@@ -182,10 +183,20 @@ namespace MeetingScheduler
           User currentParticipant = potentialParticipantList.ElementAt(i);
           bool currentParticipantHasNotExcluded = !(currentParticipant.getExclusionSlot(currentTimeSlot));
           if (currentParticipantHasNotExcluded)
+          {
             newMeetingChooseParticipantName.Items.Add(currentParticipant.getName());
+          }
           else
           {
-            stringOfUnavailiableParticipants.Append(currentParticipant.getName() + ", ");
+            if (counterOfParticipantsInString==0) {
+              stringOfUnavailiableParticipants.Append(currentParticipant.getName());
+              counterOfParticipantsInString++;
+            }
+            else
+            {
+              stringOfUnavailiableParticipants.Append(", "+currentParticipant.getName()); 
+              counterOfParticipantsInString++;
+            }
           }
         }
       }
@@ -194,7 +205,6 @@ namespace MeetingScheduler
         //similar logic but we check for participants already in the meeting and omit them
         Meeting currentMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
 
-        int counterOfParticipantsInString = 0;
         for (int i = 0; i < potentialParticipantListLength; i++)
         {
           User currentParticipant = potentialParticipantList.ElementAt(i);
@@ -217,18 +227,18 @@ namespace MeetingScheduler
             }
           }
         }
-        if (counterOfParticipantsInString > 1)
-        {
-          stringOfUnavailiableParticipants.Append(" are");
-        }
-        else if (counterOfParticipantsInString == 0)
-        {
-          stringOfUnavailiableParticipants.Clear();
-        }
-        else
-        {
-          stringOfUnavailiableParticipants.Append(" is");
-        }
+      }
+      if (counterOfParticipantsInString > 1)
+      {
+        stringOfUnavailiableParticipants.Append(" are");
+      }
+      else if (counterOfParticipantsInString == 0)
+      {
+        stringOfUnavailiableParticipants.Clear();
+      }
+      else
+      {
+        stringOfUnavailiableParticipants.Append(" is");
       }
 
 
@@ -518,7 +528,6 @@ namespace MeetingScheduler
       {
         int timeslot = currentlySelectedMeeting.getTimeSlot() - 1;
         int location = currentlySelectedMeeting.getMeetingLocation();
-        resetExclusionSlotsBeforeDeleteMeeting(currentlySelectedMeeting, timeslot);
         Meeting.deleteMeeting(timeslot, location);
 
 
@@ -538,15 +547,17 @@ namespace MeetingScheduler
         updateEditMeetingDropdown();
       }
     }
-
+    /*
     private void resetExclusionSlotsBeforeDeleteMeeting(Meeting meeting, int timeSlot)
     {
       List<Meeting.participant> participants = meeting.getParticipantList();
       for (int i = 0; i < participants.Count; i++)
       {
         participants.ElementAt(i).p.removeExclusionSlot(timeSlot);
+        participants.ElementAt(j).p.removeMeeting(meeting);
       }
     }
+    */
 
     private void editMeetingAddNewParticipantButton_Click(object sender, EventArgs e)
     {
@@ -585,7 +596,13 @@ namespace MeetingScheduler
       List<Meeting[]> listOfMeetings = baseMeeting.getMeetingList();
       Meeting.deleteMeeting(oldTimeSlot, oldLocation);
       listOfMeetings.ElementAt(newLocation)[newTimeSlot] = tempMeeting;
+      /*
+      for (int j = 0; j < listOfMeetings.ElementAt(location)[timeslot].noOfParticipants; j++)
+      {
 
+        participantList.ElementAt(j).p.addMeeting(tempMeetingArray[timeslot]);
+      }
+      */
       editMeetingChangeLocationDropdown.Text = "";
       editMeetingAddParticipantDropdown.Text = "";
       editMeetingChangeTimeSlotDropdown.Text = "";
