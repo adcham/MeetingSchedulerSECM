@@ -29,6 +29,7 @@ namespace MeetingScheduler
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Important_Participant));
       this.backToMainMenuButton = new System.Windows.Forms.Button();
       this.panel2 = new System.Windows.Forms.Panel();
       this.button3 = new System.Windows.Forms.Button();
@@ -234,6 +235,7 @@ namespace MeetingScheduler
       this.Controls.Add(this.backToMainMenuButton);
       this.Controls.Add(this.panel2);
       this.Controls.Add(this.label1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Important_Participant";
       this.Text = "Important_Participant";
       this.panel2.ResumeLayout(false);

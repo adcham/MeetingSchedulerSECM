@@ -31,6 +31,11 @@ namespace MeetingScheduler
       return this.name;
     }
 
+    public override string ToString()
+    {
+      return this.name;
+    }
+
     /*
     public void deleteEquipment(string eName)
     {

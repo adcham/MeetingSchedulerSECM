@@ -29,22 +29,23 @@ namespace MeetingScheduler
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Participant));
       this.panel2 = new System.Windows.Forms.Panel();
-      this.label1 = new System.Windows.Forms.Label();
-      this.backToMainMenuButton = new System.Windows.Forms.Button();
-      this.comboBox1 = new System.Windows.Forms.ComboBox();
-      this.label2 = new System.Windows.Forms.Label();
+      this.button1 = new System.Windows.Forms.Button();
+      this.checkBox1 = new System.Windows.Forms.CheckBox();
+      this.label4 = new System.Windows.Forms.Label();
+      this.listBox2 = new System.Windows.Forms.ListBox();
+      this.textBox3 = new System.Windows.Forms.TextBox();
+      this.textBox2 = new System.Windows.Forms.TextBox();
       this.button2 = new System.Windows.Forms.Button();
       this.label6 = new System.Windows.Forms.Label();
       this.listBox1 = new System.Windows.Forms.ListBox();
       this.label3 = new System.Windows.Forms.Label();
       this.label7 = new System.Windows.Forms.Label();
-      this.textBox2 = new System.Windows.Forms.TextBox();
-      this.textBox3 = new System.Windows.Forms.TextBox();
-      this.label4 = new System.Windows.Forms.Label();
-      this.listBox2 = new System.Windows.Forms.ListBox();
-      this.checkBox1 = new System.Windows.Forms.CheckBox();
-      this.button1 = new System.Windows.Forms.Button();
+      this.label2 = new System.Windows.Forms.Label();
+      this.comboBox1 = new System.Windows.Forms.ComboBox();
+      this.label1 = new System.Windows.Forms.Label();
+      this.backToMainMenuButton = new System.Windows.Forms.Button();
       this.panel2.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -70,44 +71,63 @@ namespace MeetingScheduler
       this.panel2.TabIndex = 85;
       this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
       // 
-      // label1
+      // button1
       // 
-      this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(80, 20);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(266, 39);
-      this.label1.TabIndex = 84;
-      this.label1.Text = "Participant View";
-      this.label1.Click += new System.EventHandler(this.label1_Click);
+      this.button1.Location = new System.Drawing.Point(15, 185);
+      this.button1.Name = "button1";
+      this.button1.Size = new System.Drawing.Size(115, 41);
+      this.button1.TabIndex = 97;
+      this.button1.Text = "Back out of meeting";
+      this.button1.UseVisualStyleBackColor = true;
       // 
-      // backToMainMenuButton
+      // checkBox1
       // 
-      this.backToMainMenuButton.Location = new System.Drawing.Point(12, 319);
-      this.backToMainMenuButton.Name = "backToMainMenuButton";
-      this.backToMainMenuButton.Size = new System.Drawing.Size(115, 23);
-      this.backToMainMenuButton.TabIndex = 86;
-      this.backToMainMenuButton.Text = "Back to Main Menu";
-      this.backToMainMenuButton.UseVisualStyleBackColor = true;
-      this.backToMainMenuButton.Click += new System.EventHandler(this.backToMainMenuButton_Click);
+      this.checkBox1.AutoSize = true;
+      this.checkBox1.Checked = true;
+      this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.checkBox1.Location = new System.Drawing.Point(40, 115);
+      this.checkBox1.Name = "checkBox1";
+      this.checkBox1.Size = new System.Drawing.Size(125, 18);
+      this.checkBox1.TabIndex = 96;
+      this.checkBox1.Text = "Confirm Attendance";
+      this.checkBox1.UseVisualStyleBackColor = true;
+      this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
       // 
-      // comboBox1
+      // label4
       // 
-      this.comboBox1.FormattingEnabled = true;
-      this.comboBox1.Location = new System.Drawing.Point(136, 9);
-      this.comboBox1.Name = "comboBox1";
-      this.comboBox1.Size = new System.Drawing.Size(251, 21);
-      this.comboBox1.TabIndex = 0;
+      this.label4.AutoSize = true;
+      this.label4.Location = new System.Drawing.Point(299, 42);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(76, 13);
+      this.label4.TabIndex = 95;
+      this.label4.Text = "Equipment List";
+      this.label4.Click += new System.EventHandler(this.label4_Click);
       // 
-      // label2
+      // listBox2
       // 
-      this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(16, 12);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(114, 13);
-      this.label2.TabIndex = 1;
-      this.label2.Text = "Select meeting to view";
-      this.label2.Click += new System.EventHandler(this.label2_Click);
+      this.listBox2.FormattingEnabled = true;
+      this.listBox2.Items.AddRange(new object[] {
+            "Laptops"});
+      this.listBox2.Location = new System.Drawing.Point(287, 58);
+      this.listBox2.Name = "listBox2";
+      this.listBox2.Size = new System.Drawing.Size(100, 121);
+      this.listBox2.TabIndex = 94;
+      this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+      // 
+      // textBox3
+      // 
+      this.textBox3.Location = new System.Drawing.Point(75, 84);
+      this.textBox3.Name = "textBox3";
+      this.textBox3.Size = new System.Drawing.Size(100, 20);
+      this.textBox3.TabIndex = 93;
+      // 
+      // textBox2
+      // 
+      this.textBox2.Location = new System.Drawing.Point(75, 58);
+      this.textBox2.Name = "textBox2";
+      this.textBox2.Size = new System.Drawing.Size(100, 20);
+      this.textBox2.TabIndex = 92;
       // 
       // button2
       // 
@@ -163,63 +183,44 @@ namespace MeetingScheduler
       this.label7.TabIndex = 82;
       this.label7.Text = "Time Slot";
       // 
-      // textBox2
+      // label2
       // 
-      this.textBox2.Location = new System.Drawing.Point(75, 58);
-      this.textBox2.Name = "textBox2";
-      this.textBox2.Size = new System.Drawing.Size(100, 20);
-      this.textBox2.TabIndex = 92;
+      this.label2.AutoSize = true;
+      this.label2.Location = new System.Drawing.Point(16, 12);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(114, 13);
+      this.label2.TabIndex = 1;
+      this.label2.Text = "Select meeting to view";
+      this.label2.Click += new System.EventHandler(this.label2_Click);
       // 
-      // textBox3
+      // comboBox1
       // 
-      this.textBox3.Location = new System.Drawing.Point(75, 84);
-      this.textBox3.Name = "textBox3";
-      this.textBox3.Size = new System.Drawing.Size(100, 20);
-      this.textBox3.TabIndex = 93;
+      this.comboBox1.FormattingEnabled = true;
+      this.comboBox1.Location = new System.Drawing.Point(136, 9);
+      this.comboBox1.Name = "comboBox1";
+      this.comboBox1.Size = new System.Drawing.Size(251, 21);
+      this.comboBox1.TabIndex = 0;
       // 
-      // label4
+      // label1
       // 
-      this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(299, 42);
-      this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(76, 13);
-      this.label4.TabIndex = 95;
-      this.label4.Text = "Equipment List";
-      this.label4.Click += new System.EventHandler(this.label4_Click);
+      this.label1.AutoSize = true;
+      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.Location = new System.Drawing.Point(80, 20);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(266, 39);
+      this.label1.TabIndex = 84;
+      this.label1.Text = "Participant View";
+      this.label1.Click += new System.EventHandler(this.label1_Click);
       // 
-      // listBox2
+      // backToMainMenuButton
       // 
-      this.listBox2.FormattingEnabled = true;
-      this.listBox2.Items.AddRange(new object[] {
-            "Laptops"});
-      this.listBox2.Location = new System.Drawing.Point(287, 58);
-      this.listBox2.Name = "listBox2";
-      this.listBox2.Size = new System.Drawing.Size(100, 121);
-      this.listBox2.TabIndex = 94;
-      this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
-      // 
-      // checkBox1
-      // 
-      this.checkBox1.AutoSize = true;
-      this.checkBox1.Checked = true;
-      this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.checkBox1.Location = new System.Drawing.Point(40, 115);
-      this.checkBox1.Name = "checkBox1";
-      this.checkBox1.Size = new System.Drawing.Size(125, 18);
-      this.checkBox1.TabIndex = 96;
-      this.checkBox1.Text = "Confirm Attendance";
-      this.checkBox1.UseVisualStyleBackColor = true;
-      this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-      // 
-      // button1
-      // 
-      this.button1.Location = new System.Drawing.Point(15, 185);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(115, 41);
-      this.button1.TabIndex = 97;
-      this.button1.Text = "Back out of meeting";
-      this.button1.UseVisualStyleBackColor = true;
+      this.backToMainMenuButton.Location = new System.Drawing.Point(12, 319);
+      this.backToMainMenuButton.Name = "backToMainMenuButton";
+      this.backToMainMenuButton.Size = new System.Drawing.Size(115, 23);
+      this.backToMainMenuButton.TabIndex = 86;
+      this.backToMainMenuButton.Text = "Back to Main Menu";
+      this.backToMainMenuButton.UseVisualStyleBackColor = true;
+      this.backToMainMenuButton.Click += new System.EventHandler(this.backToMainMenuButton_Click);
       // 
       // Participant
       // 
@@ -229,6 +230,7 @@ namespace MeetingScheduler
       this.Controls.Add(this.backToMainMenuButton);
       this.Controls.Add(this.panel2);
       this.Controls.Add(this.label1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Participant";
       this.Text = "Meeting Scheduler - Participant View";
       this.panel2.ResumeLayout(false);

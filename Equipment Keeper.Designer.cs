@@ -29,6 +29,7 @@ namespace MeetingScheduler
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Equipment_Keeper));
       this.equipmentList = new System.Windows.Forms.ListBox();
       this.addEquipmentLabel = new System.Windows.Forms.Label();
       this.selectLocationNameLabel = new System.Windows.Forms.Label();
@@ -332,6 +333,7 @@ namespace MeetingScheduler
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.backToMainMenuButton);
       this.Controls.Add(this.label1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Equipment_Keeper";
       this.Text = "Meeting Scheduler - Equipment Keeper View";
       this.Load += new System.EventHandler(this.Equipment_Keeper_Load);

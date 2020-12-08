@@ -31,6 +31,7 @@ namespace MeetingScheduler
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(System_Administrator));
       this.addNewLocationBtn = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
       this.backToMainMenuButton = new System.Windows.Forms.Button();
@@ -150,10 +151,11 @@ namespace MeetingScheduler
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(424, 447);
+      this.ClientSize = new System.Drawing.Size(420, 447);
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.backToMainMenuButton);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "System_Administrator";
       this.Text = "Meeting Scheduler";
       this.Load += new System.EventHandler(this.System_Administrator_Load);

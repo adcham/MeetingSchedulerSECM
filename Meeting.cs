@@ -19,6 +19,7 @@ namespace MeetingScheduler
     public string meetingName;
     public int meetingLocation;
     public int timeSlot;
+    private List<Equipment> requestedEquipment;
 
     public struct participant
     {
@@ -68,6 +69,7 @@ namespace MeetingScheduler
       this.meetingName = mName;
       noOfParticipants = users.Count;
       participants = new List<participant>();
+      requestedEquipment = new List<Equipment>();
       this.meetingLocation = location;
       this.timeSlot = timeSlot;
 
@@ -81,6 +83,52 @@ namespace MeetingScheduler
     }
     ~Meeting() { }
 
+    public void requestEquipment(Equipment e)
+    {
+      requestedEquipment.Add(e);
+    }
+
+    public List<Equipment> getRequestedEquipment()
+    {
+      return requestedEquipment;
+    }
+
+    public string getMissingEquipmentToString()
+    {
+      StringBuilder missingEquipmentList = new StringBuilder();
+      List<Equipment> listOfEquipmentAtCurrentLocation = baseLocation.GetEquipment(meetingLocation);
+      bool firstitem = true;
+
+      foreach (Equipment e in requestedEquipment)
+      {
+        bool found = false;
+        int counter = 0;
+        while (!found && counter < listOfEquipmentAtCurrentLocation.Count)
+        {
+          bool equipmentExists = listOfEquipmentAtCurrentLocation.ElementAt(counter).getName() == e.getName();
+          if (equipmentExists)
+          {
+            found = true;
+          }
+          else
+          {
+            counter++;
+          }
+        }
+        if (!found)
+        {
+          if (firstitem)
+          {
+            missingEquipmentList.Append(e.getName());
+            firstitem = false;
+          }
+          else
+            missingEquipmentList.Append(", " + e.getName());
+        }
+      }
+
+      return missingEquipmentList.ToString();
+    }
     public static void deleteMeeting(int timeslot,int location)
     {
       Meeting[] tempMeetingArray  =  new Meeting[NOOFTIMESLOTS];

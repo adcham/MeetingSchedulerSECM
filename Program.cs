@@ -56,6 +56,8 @@ namespace MeetingScheduler
       Equipment testEquipment4 = new Equipment("unique equipment", true);
       Equipment testEquipment5 = new Equipment("Projector", false);
 
+      Equipment testEquipment6 = new Equipment("3D Printer", false);
+
       Location equipmentStorageLocation = new Location("Storage");
       Equipment storageEquipment1 = new Equipment("Stored Equipment A", true);
       Equipment storageEquipment2 = new Equipment("Stored Equipment B", true);
@@ -91,7 +93,10 @@ namespace MeetingScheduler
       potentialParticipantsForTestMeeting.Add(testUser3);
       //add meeting to test
       Meeting testMeeting = new Meeting("testMeeting", potentialParticipantsForTestMeeting, 0, 1);
+
       testMeeting.changeImportance("Adam", true);
+      testMeeting.requestEquipment(testEquipment);
+      testMeeting.requestEquipment(testEquipment6);
 
 
 

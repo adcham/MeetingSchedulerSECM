@@ -129,6 +129,17 @@ namespace MeetingScheduler
 
     public List<Location> GetLocationsWithoutStorage()
     {
+      List<Location> templocationMinusStorage = new List<Location>();
+      foreach(Location l in locationList)
+      {
+        if (l.getName() != "Storage")
+          templocationMinusStorage.Add(l);
+      }
+      return templocationMinusStorage;
+    }
+
+    public static List<Location> GetLocationsWithoutStorageStatic()
+    {
       List<Location> templocationMinusStorage = locationList;
       templocationMinusStorage.RemoveAt(0);
       return templocationMinusStorage;
@@ -183,7 +194,7 @@ namespace MeetingScheduler
     {
       bool searching = true;
       int counter = 0;
-      while (searching)
+      while (searching && counter < GetLocationsWithoutStorage().Count)
       {
         if (locationList.ElementAt(counter).getName() == locationName)
           searching = false;
@@ -192,7 +203,7 @@ namespace MeetingScheduler
       }
 
       //storage is at 0
-      return counter-1;
+      return counter;
     }
   }
 }
