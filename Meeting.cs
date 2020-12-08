@@ -20,18 +20,39 @@ namespace MeetingScheduler
     public int meetingLocation;
     public int timeSlot;
     private List<Equipment> requestedEquipment;
+    private List<Location> suggestedLocations;
 
     public struct participant
     {
       public User p;
       public bool important;
+      public bool confirmedAttendance;
 
       public participant(User user, bool important)
       {
         p = user;
         this.important = important;
+        confirmedAttendance = false;
+      }
+      public participant(User user, bool important,bool attendance)
+      {
+        p = user;
+        this.important = important;
+        confirmedAttendance = attendance;
       }
 
+      public void confirmAttendance()
+      {
+        this.confirmedAttendance  =  true;
+      }
+      public void unConfirmAttendance()
+      {
+        this.confirmedAttendance = false;
+      }
+      public bool getAttendance()
+      {
+                return confirmedAttendance;
+      }
       public bool getImportance()
       {
         return this.important;
@@ -52,6 +73,25 @@ namespace MeetingScheduler
       {
         return this.p;
       }
+    }
+
+    public void changeAttendance(string name,bool value)
+    {
+      int foundParticipantIndex = findParticipantIndex(name);
+      if (foundParticipantIndex != -1)
+      {
+        addParticipant(participants[foundParticipantIndex].p, participants[foundParticipantIndex].important, value) ;
+        participants.RemoveAt(foundParticipantIndex);
+      }
+    }
+    public bool getAttendance(string name)
+    {
+      int foundParticipantIndex = findParticipantIndex(name);
+      if (foundParticipantIndex != -1)
+      {
+        return participants[foundParticipantIndex].confirmedAttendance;
+      }
+      return false;
     }
 
     private List<participant> participants;
@@ -75,6 +115,7 @@ namespace MeetingScheduler
       noOfParticipants = users.Count;
       participants = new List<participant>();
       requestedEquipment = new List<Equipment>();
+      suggestedLocations = new List<Location>();
       this.meetingLocation = location;
       this.timeSlot = timeSlot;
 
@@ -88,10 +129,28 @@ namespace MeetingScheduler
       listOfMeetings.ElementAt(location)[timeSlot] = this;
     }
     ~Meeting() { }
+    public void addSuggestedLocation(Location suggestLocation)
+    {
+      suggestedLocations.Add(suggestLocation);
+    }
+
+    public List<Location> getSuggestedLocations()
+    {
+      return this.suggestedLocations;
+    }
+    public void removeSuggestedLocation(Location locationToBeRemoved)
+    {
+      suggestedLocations.Remove(locationToBeRemoved);
+    }
 
     public void requestEquipment(Equipment e)
     {
       requestedEquipment.Add(e);
+    }
+
+    public void removeRequestedEquipment(Equipment equipmentToBeRemoved)
+    {
+      requestedEquipment.Remove(equipmentToBeRemoved);
     }
 
     public List<Equipment> getRequestedEquipment()
@@ -146,7 +205,7 @@ namespace MeetingScheduler
         }
       }
       List<Meeting.participant> participantList = listOfMeetings.ElementAt(location)[timeslot].getParticipantList();
-      for (int j = 0; j < listOfMeetings.ElementAt(location)[timeslot].noOfParticipants; j++)
+      for (int j = 0; j < participantList.Count; j++)
       {
         participantList.ElementAt(j).p.removeMeeting(listOfMeetings.ElementAt(location)[timeslot]);
         participantList.ElementAt(j).p.removeExclusionSlot(timeslot);
@@ -161,17 +220,35 @@ namespace MeetingScheduler
       //tempMeeting = null;
     }
 
+    public String getLocationName()
+    {
+      return Location.getName(meetingLocation);
+    }
+
     public void addParticipant(User participant, bool important)
     {
       participant tempParticipant = new participant(participant, important);
       participants.Add(tempParticipant);
       noOfParticipants++;
     }
+    public void addParticipant(User participant, bool important,bool attendance)
+    {
+      participant tempParticipant = new participant(participant, important,attendance);
+      participants.Add(tempParticipant);
+      noOfParticipants++;
+    }
     public void removeParticipant(string name)
     {
       int foundParticipantIndex = findParticipantIndex(name);
+      int currentTimeSlot = this.getTimeSlot()-1;
+
       if (foundParticipantIndex != -1)
       {
+        participants.ElementAt(foundParticipantIndex).p.removeMeeting(this);
+        //removing the exclusion slot
+        participants.ElementAt(foundParticipantIndex).p.removeExclusionSlot(currentTimeSlot);
+        
+        //removing the participant from the participants
         participants.RemoveAt(foundParticipantIndex);
       }
       else
@@ -254,7 +331,7 @@ namespace MeetingScheduler
       foreach(participant pToChangeExclusionsFor in this.participants)
       {
         pToChangeExclusionsFor.p.removeExclusionSlot(oldTimeSlot);
-        pToChangeExclusionsFor.p.addExclusionSlot(timeSlot);
+        pToChangeExclusionsFor.p.addExclusionSlot(timeSlot+1);
       }
 
     }

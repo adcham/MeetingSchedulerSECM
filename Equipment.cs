@@ -8,7 +8,7 @@ namespace MeetingScheduler
 {
   class Equipment
   {
-    //static private List<Equipment> equipmentList = new List<Equipment>();
+    static private List<Equipment> equipmentList = new List<Equipment>();
 
     private string name;
     public bool movable;
@@ -17,13 +17,13 @@ namespace MeetingScheduler
     {
       this.name = eName;
       this.movable = false;
-    //  equipmentList.Add(this);
+      equipmentList.Add(this);
     }
     public Equipment(string eName, bool mov)
     {
       this.name = eName;
       this.movable = mov;
-     // equipmentList.Add(this);
+      equipmentList.Add(this);
     }
 
     public string getName()
@@ -34,6 +34,11 @@ namespace MeetingScheduler
     public override string ToString()
     {
       return this.name;
+    }
+
+    public static List<Equipment> getListOfAllEquipment()
+    {
+      return equipmentList;
     }
 
     /*

@@ -148,6 +148,11 @@ namespace MeetingScheduler
       return this.locationName;
     }
 
+    public static string getName(int index)
+    {
+      return locationList.ElementAt(index).getName();
+    }
+    
     public List<Equipment> GetEquipment()
     {
       return this.availableEquipment;
@@ -197,6 +202,11 @@ namespace MeetingScheduler
 
       //storage is at 0
       return counter;
+    }
+
+    public override string ToString()
+    {
+      return this.getName();
     }
   }
 }

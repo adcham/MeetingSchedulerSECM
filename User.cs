@@ -47,6 +47,9 @@ namespace MeetingScheduler
     public void addPreferenceSlot(int slot)
     {
       this.preferenceSet[slot-1]=true;
+
+      //when you prefer a slot this removes it from your exlusion set
+      this.exclusionSet[slot - 1] = false;
     }
 
     public bool getPreferenceSlot(int slot)
@@ -57,6 +60,9 @@ namespace MeetingScheduler
     public void addExclusionSlot(int slot)
     {
       this.exclusionSet[slot-1]=true;
+
+      //when you exclude a set this adds to your preference set
+      this.preferenceSet[slot - 1] = false;
     }
 
     public bool getExclusionSlot (int slot)

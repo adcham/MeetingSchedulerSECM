@@ -26,6 +26,8 @@ namespace MeetingScheduler
       User testUser2 = new User("Maxwel", User.EmployeeType.participant);
       User testUser3 = new User("Adam", User.EmployeeType.participant);
 
+      
+
       testUser1.addPreferenceSlot(1);
       testUser1.addPreferenceSlot(2);
       testUser1.addPreferenceSlot(3);
@@ -96,6 +98,9 @@ namespace MeetingScheduler
 
       testMeeting.changeImportance("Adam", true);
       testMeeting.requestEquipment(testEquipment);
+      testMeeting.addSuggestedLocation(testLocation2);
+      testMeeting.changeAttendance("Adam",true);
+      testMeeting.changeAttendance("Mazen",true);
       //testMeeting.requestEquipment(testEquipment6);
 
 
