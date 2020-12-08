@@ -34,7 +34,6 @@ namespace MeetingScheduler
       this.goToMeetingInitiatorView = new System.Windows.Forms.Button();
       this.goToSysAdminView = new System.Windows.Forms.Button();
       this.gotoEquipmentKeeperView = new System.Windows.Forms.Button();
-      this.goToImportantParticipantView = new System.Windows.Forms.Button();
       this.goToParticipantView = new System.Windows.Forms.Button();
       this.exitProgramButton = new System.Windows.Forms.Button();
       this.panel1 = new System.Windows.Forms.Panel();
@@ -65,7 +64,7 @@ namespace MeetingScheduler
       // 
       // goToSysAdminView
       // 
-      this.goToSysAdminView.Location = new System.Drawing.Point(15, 184);
+      this.goToSysAdminView.Location = new System.Drawing.Point(15, 145);
       this.goToSysAdminView.Name = "goToSysAdminView";
       this.goToSysAdminView.Size = new System.Drawing.Size(251, 30);
       this.goToSysAdminView.TabIndex = 2;
@@ -76,7 +75,7 @@ namespace MeetingScheduler
       // gotoEquipmentKeeperView
       // 
       this.gotoEquipmentKeeperView.BackColor = System.Drawing.SystemColors.MenuBar;
-      this.gotoEquipmentKeeperView.Location = new System.Drawing.Point(15, 148);
+      this.gotoEquipmentKeeperView.Location = new System.Drawing.Point(15, 110);
       this.gotoEquipmentKeeperView.Name = "gotoEquipmentKeeperView";
       this.gotoEquipmentKeeperView.Size = new System.Drawing.Size(251, 30);
       this.gotoEquipmentKeeperView.TabIndex = 3;
@@ -84,21 +83,10 @@ namespace MeetingScheduler
       this.gotoEquipmentKeeperView.UseVisualStyleBackColor = false;
       this.gotoEquipmentKeeperView.Click += new System.EventHandler(this.button3_Click);
       // 
-      // goToImportantParticipantView
-      // 
-      this.goToImportantParticipantView.BackColor = System.Drawing.SystemColors.MenuBar;
-      this.goToImportantParticipantView.Location = new System.Drawing.Point(15, 76);
-      this.goToImportantParticipantView.Name = "goToImportantParticipantView";
-      this.goToImportantParticipantView.Size = new System.Drawing.Size(251, 30);
-      this.goToImportantParticipantView.TabIndex = 4;
-      this.goToImportantParticipantView.Text = "Important Participant";
-      this.goToImportantParticipantView.UseVisualStyleBackColor = false;
-      this.goToImportantParticipantView.Click += new System.EventHandler(this.goToImportantParticipantView_Click);
-      // 
       // goToParticipantView
       // 
       this.goToParticipantView.BackColor = System.Drawing.SystemColors.MenuBar;
-      this.goToParticipantView.Location = new System.Drawing.Point(15, 112);
+      this.goToParticipantView.Location = new System.Drawing.Point(15, 74);
       this.goToParticipantView.Name = "goToParticipantView";
       this.goToParticipantView.Size = new System.Drawing.Size(251, 30);
       this.goToParticipantView.TabIndex = 5;
@@ -108,7 +96,7 @@ namespace MeetingScheduler
       // 
       // exitProgramButton
       // 
-      this.exitProgramButton.Location = new System.Drawing.Point(12, 247);
+      this.exitProgramButton.Location = new System.Drawing.Point(12, 206);
       this.exitProgramButton.Name = "exitProgramButton";
       this.exitProgramButton.Size = new System.Drawing.Size(75, 23);
       this.exitProgramButton.TabIndex = 6;
@@ -124,17 +112,17 @@ namespace MeetingScheduler
       this.panel1.Controls.Add(this.label1);
       this.panel1.Controls.Add(this.goToParticipantView);
       this.panel1.Controls.Add(this.gotoEquipmentKeeperView);
-      this.panel1.Controls.Add(this.goToImportantParticipantView);
-      this.panel1.Location = new System.Drawing.Point(12, 12);
+      this.panel1.Location = new System.Drawing.Point(12, 10);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(282, 229);
+      this.panel1.Size = new System.Drawing.Size(282, 190);
       this.panel1.TabIndex = 7;
+      this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
       // 
       // MainMenu
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(308, 278);
+      this.ClientSize = new System.Drawing.Size(304, 237);
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.exitProgramButton);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -153,7 +141,6 @@ namespace MeetingScheduler
     private System.Windows.Forms.Button goToMeetingInitiatorView;
     private System.Windows.Forms.Button goToSysAdminView;
     private System.Windows.Forms.Button gotoEquipmentKeeperView;
-    private System.Windows.Forms.Button goToImportantParticipantView;
     private System.Windows.Forms.Button goToParticipantView;
     private System.Windows.Forms.Button exitProgramButton;
     private System.Windows.Forms.Panel panel1;

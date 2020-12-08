@@ -60,11 +60,11 @@ namespace MeetingScheduler
       newForm.ShowDialog();
     }
 
-    private void goToImportantParticipantView_Click(object sender, EventArgs e)
+
+
+    private void panel1_Paint(object sender, PaintEventArgs e)
     {
-      Important_Participant newForm = new Important_Participant();
-      this.Hide();
-      newForm.ShowDialog();
+
     }
   }
 }

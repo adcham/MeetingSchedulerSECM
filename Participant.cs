@@ -317,7 +317,7 @@ namespace MeetingScheduler
     {
       if (currentUserImportant)
       {
-        MessageBox.Show("As you are an important participant of this meeting you may not back out as your attendance is assumed essential for the meeting to take place. Please speak to Mehmet, the meeting initiator.");
+        MessageBox.Show("The meeting initiator, Mehmet, has been notified that you would like to back out of the meeting.");
       }
       else
       {

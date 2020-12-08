@@ -52,12 +52,6 @@
     <Compile Include="Equipment Keeper.Designer.cs">
       <DependentUpon>Equipment Keeper.cs</DependentUpon>
     </Compile>
-    <Compile Include="Important Participant.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Important Participant.Designer.cs">
-      <DependentUpon>Important Participant.cs</DependentUpon>
-    </Compile>
     <Compile Include="Meeting Initiator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,9 +84,6 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="Equipment Keeper.resx">
       <DependentUpon>Equipment Keeper.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Important Participant.resx">
-      <DependentUpon>Important Participant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
