@@ -29,6 +29,7 @@ namespace MeetingScheduler
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Meeting_Initiator));
       this.label5 = new System.Windows.Forms.Label();
       this.backToMainMenuButton = new System.Windows.Forms.Button();
@@ -61,6 +62,18 @@ namespace MeetingScheduler
       this.label11 = new System.Windows.Forms.Label();
       this.newMeetingMeetingName = new System.Windows.Forms.TextBox();
       this.panel1 = new System.Windows.Forms.Panel();
+      this.editMeetingParticipantConflictsGroupbox = new System.Windows.Forms.GroupBox();
+      this.editMeetingParticipantConflictsToDisplay = new System.Windows.Forms.Label();
+      this.label13 = new System.Windows.Forms.Label();
+      this.requestedEquipmentConflictDataGroupboxLabel = new System.Windows.Forms.GroupBox();
+      this.equipmentNotAtCurrentLocationLbl = new System.Windows.Forms.Label();
+      this.label19 = new System.Windows.Forms.Label();
+      this.label16 = new System.Windows.Forms.Label();
+      this.label17 = new System.Windows.Forms.Label();
+      this.label15 = new System.Windows.Forms.Label();
+      this.label14 = new System.Windows.Forms.Label();
+      this.editMeetingCurrentLocationEquipment = new System.Windows.Forms.ListBox();
+      this.editMeetingCurrentRequestedEquipment = new System.Windows.Forms.ListBox();
       this.editMeetingAddParticipantDropdown = new System.Windows.Forms.ComboBox();
       this.editMeetingAddParticipantLabel = new System.Windows.Forms.Label();
       this.currentTimeSlotLabel = new System.Windows.Forms.Label();
@@ -68,27 +81,23 @@ namespace MeetingScheduler
       this.currentTimeSlotLabelLabel = new System.Windows.Forms.Label();
       this.currentLocationLabelLabel = new System.Windows.Forms.Label();
       this.panel2 = new System.Windows.Forms.Panel();
+      this.createNewMeetingParticipantConflictsgroupBox = new System.Windows.Forms.GroupBox();
+      this.participantConflictsToDisplayLbl = new System.Windows.Forms.Label();
+      this.label18 = new System.Windows.Forms.Label();
       this.newMeetingChooseParticipantName = new System.Windows.Forms.ComboBox();
       this.label12 = new System.Windows.Forms.Label();
-      this.editMeetingCurrentLocationEquipment = new System.Windows.Forms.ListBox();
-      this.editMeetingCurrentRequestedEquipment = new System.Windows.Forms.ListBox();
-      this.label14 = new System.Windows.Forms.Label();
-      this.label15 = new System.Windows.Forms.Label();
-      this.label16 = new System.Windows.Forms.Label();
-      this.label17 = new System.Windows.Forms.Label();
-      this.label19 = new System.Windows.Forms.Label();
-      this.requestedEquipmentConflictDataGroupboxLabel = new System.Windows.Forms.GroupBox();
-      this.equipmentNotAtCurrentLocationLbl = new System.Windows.Forms.Label();
-      this.label13 = new System.Windows.Forms.Label();
+      this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
       this.panel1.SuspendLayout();
-      this.panel2.SuspendLayout();
+      this.editMeetingParticipantConflictsGroupbox.SuspendLayout();
       this.requestedEquipmentConflictDataGroupboxLabel.SuspendLayout();
+      this.panel2.SuspendLayout();
+      this.createNewMeetingParticipantConflictsgroupBox.SuspendLayout();
       this.SuspendLayout();
       // 
       // label5
       // 
       this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(133, 2);
+      this.label5.Location = new System.Drawing.Point(126, 2);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(101, 13);
       this.label5.TabIndex = 24;
@@ -96,7 +105,7 @@ namespace MeetingScheduler
       // 
       // backToMainMenuButton
       // 
-      this.backToMainMenuButton.Location = new System.Drawing.Point(12, 355);
+      this.backToMainMenuButton.Location = new System.Drawing.Point(4, 464);
       this.backToMainMenuButton.Name = "backToMainMenuButton";
       this.backToMainMenuButton.Size = new System.Drawing.Size(115, 23);
       this.backToMainMenuButton.TabIndex = 16;
@@ -108,7 +117,7 @@ namespace MeetingScheduler
       // 
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(247, 23);
+      this.label1.Location = new System.Drawing.Point(371, 19);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(347, 39);
       this.label1.TabIndex = 15;
@@ -118,7 +127,7 @@ namespace MeetingScheduler
       // newMeetingLocationDropdown
       // 
       this.newMeetingLocationDropdown.FormattingEnabled = true;
-      this.newMeetingLocationDropdown.Location = new System.Drawing.Point(136, 64);
+      this.newMeetingLocationDropdown.Location = new System.Drawing.Point(129, 64);
       this.newMeetingLocationDropdown.Name = "newMeetingLocationDropdown";
       this.newMeetingLocationDropdown.Size = new System.Drawing.Size(100, 21);
       this.newMeetingLocationDropdown.TabIndex = 46;
@@ -127,7 +136,7 @@ namespace MeetingScheduler
       // newMeetingTimeslotDropdown
       // 
       this.newMeetingTimeslotDropdown.FormattingEnabled = true;
-      this.newMeetingTimeslotDropdown.Location = new System.Drawing.Point(136, 91);
+      this.newMeetingTimeslotDropdown.Location = new System.Drawing.Point(129, 91);
       this.newMeetingTimeslotDropdown.Name = "newMeetingTimeslotDropdown";
       this.newMeetingTimeslotDropdown.Size = new System.Drawing.Size(100, 21);
       this.newMeetingTimeslotDropdown.TabIndex = 45;
@@ -136,7 +145,7 @@ namespace MeetingScheduler
       // label7
       // 
       this.label7.AutoSize = true;
-      this.label7.Location = new System.Drawing.Point(23, 94);
+      this.label7.Location = new System.Drawing.Point(16, 94);
       this.label7.Name = "label7";
       this.label7.Size = new System.Drawing.Size(84, 13);
       this.label7.TabIndex = 44;
@@ -145,7 +154,7 @@ namespace MeetingScheduler
       // label2
       // 
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(24, 67);
+      this.label2.Location = new System.Drawing.Point(17, 67);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(81, 13);
       this.label2.TabIndex = 49;
@@ -155,7 +164,7 @@ namespace MeetingScheduler
       // newMeetingParticipantList
       // 
       this.newMeetingParticipantList.FormattingEnabled = true;
-      this.newMeetingParticipantList.Location = new System.Drawing.Point(242, 38);
+      this.newMeetingParticipantList.Location = new System.Drawing.Point(235, 38);
       this.newMeetingParticipantList.Name = "newMeetingParticipantList";
       this.newMeetingParticipantList.Size = new System.Drawing.Size(100, 108);
       this.newMeetingParticipantList.TabIndex = 52;
@@ -164,7 +173,7 @@ namespace MeetingScheduler
       // label6
       // 
       this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(250, 22);
+      this.label6.Location = new System.Drawing.Point(243, 22);
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(76, 13);
       this.label6.TabIndex = 57;
@@ -173,9 +182,9 @@ namespace MeetingScheduler
       // 
       // addNewParticipant
       // 
-      this.addNewParticipant.Location = new System.Drawing.Point(136, 145);
+      this.addNewParticipant.Location = new System.Drawing.Point(126, 139);
       this.addNewParticipant.Name = "addNewParticipant";
-      this.addNewParticipant.Size = new System.Drawing.Size(100, 26);
+      this.addNewParticipant.Size = new System.Drawing.Size(100, 22);
       this.addNewParticipant.TabIndex = 58;
       this.addNewParticipant.Text = "Add Participant";
       this.addNewParticipant.UseVisualStyleBackColor = true;
@@ -183,9 +192,9 @@ namespace MeetingScheduler
       // 
       // createNewMeetingBtn
       // 
-      this.createNewMeetingBtn.Location = new System.Drawing.Point(3, 200);
+      this.createNewMeetingBtn.Location = new System.Drawing.Point(23, 166);
       this.createNewMeetingBtn.Name = "createNewMeetingBtn";
-      this.createNewMeetingBtn.Size = new System.Drawing.Size(206, 31);
+      this.createNewMeetingBtn.Size = new System.Drawing.Size(206, 25);
       this.createNewMeetingBtn.TabIndex = 59;
       this.createNewMeetingBtn.Text = "Create Meeting";
       this.createNewMeetingBtn.UseVisualStyleBackColor = true;
@@ -193,7 +202,7 @@ namespace MeetingScheduler
       // 
       // removeSelectedParticipantFromNewMeetingBtn
       // 
-      this.removeSelectedParticipantFromNewMeetingBtn.Location = new System.Drawing.Point(242, 152);
+      this.removeSelectedParticipantFromNewMeetingBtn.Location = new System.Drawing.Point(235, 152);
       this.removeSelectedParticipantFromNewMeetingBtn.Name = "removeSelectedParticipantFromNewMeetingBtn";
       this.removeSelectedParticipantFromNewMeetingBtn.Size = new System.Drawing.Size(100, 39);
       this.removeSelectedParticipantFromNewMeetingBtn.TabIndex = 60;
@@ -213,11 +222,13 @@ namespace MeetingScheduler
       // 
       // button5
       // 
-      this.button5.Location = new System.Drawing.Point(8, 256);
+      this.button5.Location = new System.Drawing.Point(223, 292);
       this.button5.Name = "button5";
-      this.button5.Size = new System.Drawing.Size(134, 30);
+      this.button5.Size = new System.Drawing.Size(206, 37);
       this.button5.TabIndex = 69;
-      this.button5.Text = "Save Meeting Changes";
+      this.button5.Text = "Save Location and Time Slot changes";
+      this.toolTip1.SetToolTip(this.button5, "Participant changes are saved as and when they are made. This button only saves c" +
+        "hanges to location and time slot changes.");
       this.button5.UseVisualStyleBackColor = true;
       this.button5.Click += new System.EventHandler(this.button5_Click);
       // 
@@ -347,7 +358,7 @@ namespace MeetingScheduler
       this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.button11.ForeColor = System.Drawing.Color.White;
-      this.button11.Location = new System.Drawing.Point(890, 48);
+      this.button11.Location = new System.Drawing.Point(927, 48);
       this.button11.Name = "button11";
       this.button11.Size = new System.Drawing.Size(132, 30);
       this.button11.TabIndex = 78;
@@ -358,7 +369,7 @@ namespace MeetingScheduler
       // label11
       // 
       this.label11.AutoSize = true;
-      this.label11.Location = new System.Drawing.Point(24, 41);
+      this.label11.Location = new System.Drawing.Point(17, 41);
       this.label11.Name = "label11";
       this.label11.Size = new System.Drawing.Size(76, 13);
       this.label11.TabIndex = 80;
@@ -367,7 +378,7 @@ namespace MeetingScheduler
       // 
       // newMeetingMeetingName
       // 
-      this.newMeetingMeetingName.Location = new System.Drawing.Point(136, 38);
+      this.newMeetingMeetingName.Location = new System.Drawing.Point(129, 38);
       this.newMeetingMeetingName.Name = "newMeetingMeetingName";
       this.newMeetingMeetingName.Size = new System.Drawing.Size(100, 20);
       this.newMeetingMeetingName.TabIndex = 81;
@@ -375,6 +386,7 @@ namespace MeetingScheduler
       // panel1
       // 
       this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+      this.panel1.Controls.Add(this.editMeetingParticipantConflictsGroupbox);
       this.panel1.Controls.Add(this.label13);
       this.panel1.Controls.Add(this.requestedEquipmentConflictDataGroupboxLabel);
       this.panel1.Controls.Add(this.label19);
@@ -407,8 +419,123 @@ namespace MeetingScheduler
       this.panel1.Controls.Add(this.label9);
       this.panel1.Location = new System.Drawing.Point(370, 84);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(689, 294);
+      this.panel1.Size = new System.Drawing.Size(689, 345);
       this.panel1.TabIndex = 82;
+      // 
+      // editMeetingParticipantConflictsGroupbox
+      // 
+      this.editMeetingParticipantConflictsGroupbox.Controls.Add(this.editMeetingParticipantConflictsToDisplay);
+      this.editMeetingParticipantConflictsGroupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.editMeetingParticipantConflictsGroupbox.ForeColor = System.Drawing.Color.Black;
+      this.editMeetingParticipantConflictsGroupbox.Location = new System.Drawing.Point(8, 226);
+      this.editMeetingParticipantConflictsGroupbox.Name = "editMeetingParticipantConflictsGroupbox";
+      this.editMeetingParticipantConflictsGroupbox.Size = new System.Drawing.Size(209, 103);
+      this.editMeetingParticipantConflictsGroupbox.TabIndex = 95;
+      this.editMeetingParticipantConflictsGroupbox.TabStop = false;
+      this.editMeetingParticipantConflictsGroupbox.Text = "List of unavailiable participants";
+      // 
+      // editMeetingParticipantConflictsToDisplay
+      // 
+      this.editMeetingParticipantConflictsToDisplay.AutoSize = true;
+      this.editMeetingParticipantConflictsToDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.editMeetingParticipantConflictsToDisplay.Location = new System.Drawing.Point(6, 16);
+      this.editMeetingParticipantConflictsToDisplay.MaximumSize = new System.Drawing.Size(200, 0);
+      this.editMeetingParticipantConflictsToDisplay.Name = "editMeetingParticipantConflictsToDisplay";
+      this.editMeetingParticipantConflictsToDisplay.Size = new System.Drawing.Size(0, 13);
+      this.editMeetingParticipantConflictsToDisplay.TabIndex = 0;
+      // 
+      // label13
+      // 
+      this.label13.AutoSize = true;
+      this.label13.Location = new System.Drawing.Point(10, 11);
+      this.label13.Name = "label13";
+      this.label13.Size = new System.Drawing.Size(110, 13);
+      this.label13.TabIndex = 95;
+      this.label13.Text = "Select Meeting to edit";
+      // 
+      // requestedEquipmentConflictDataGroupboxLabel
+      // 
+      this.requestedEquipmentConflictDataGroupboxLabel.Controls.Add(this.equipmentNotAtCurrentLocationLbl);
+      this.requestedEquipmentConflictDataGroupboxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.requestedEquipmentConflictDataGroupboxLabel.ForeColor = System.Drawing.Color.DarkRed;
+      this.requestedEquipmentConflictDataGroupboxLabel.Location = new System.Drawing.Point(437, 220);
+      this.requestedEquipmentConflictDataGroupboxLabel.Name = "requestedEquipmentConflictDataGroupboxLabel";
+      this.requestedEquipmentConflictDataGroupboxLabel.Size = new System.Drawing.Size(240, 109);
+      this.requestedEquipmentConflictDataGroupboxLabel.TabIndex = 94;
+      this.requestedEquipmentConflictDataGroupboxLabel.TabStop = false;
+      this.requestedEquipmentConflictDataGroupboxLabel.Text = "Requested Equipment not availiable";
+      // 
+      // equipmentNotAtCurrentLocationLbl
+      // 
+      this.equipmentNotAtCurrentLocationLbl.AutoSize = true;
+      this.equipmentNotAtCurrentLocationLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.equipmentNotAtCurrentLocationLbl.Location = new System.Drawing.Point(6, 16);
+      this.equipmentNotAtCurrentLocationLbl.MaximumSize = new System.Drawing.Size(230, 0);
+      this.equipmentNotAtCurrentLocationLbl.Name = "equipmentNotAtCurrentLocationLbl";
+      this.equipmentNotAtCurrentLocationLbl.Size = new System.Drawing.Size(0, 13);
+      this.equipmentNotAtCurrentLocationLbl.TabIndex = 0;
+      // 
+      // label19
+      // 
+      this.label19.AutoSize = true;
+      this.label19.Location = new System.Drawing.Point(567, 38);
+      this.label19.Name = "label19";
+      this.label19.Size = new System.Drawing.Size(41, 13);
+      this.label19.TabIndex = 92;
+      this.label19.Text = "Current";
+      // 
+      // label16
+      // 
+      this.label16.AutoSize = true;
+      this.label16.Location = new System.Drawing.Point(580, 51);
+      this.label16.Name = "label16";
+      this.label16.Size = new System.Drawing.Size(57, 13);
+      this.label16.TabIndex = 91;
+      this.label16.Text = "Equipment";
+      // 
+      // label17
+      // 
+      this.label17.AutoSize = true;
+      this.label17.Location = new System.Drawing.Point(606, 38);
+      this.label17.Name = "label17";
+      this.label17.Size = new System.Drawing.Size(48, 13);
+      this.label17.TabIndex = 90;
+      this.label17.Text = "Location";
+      // 
+      // label15
+      // 
+      this.label15.AutoSize = true;
+      this.label15.Location = new System.Drawing.Point(465, 51);
+      this.label15.Name = "label15";
+      this.label15.Size = new System.Drawing.Size(57, 13);
+      this.label15.TabIndex = 89;
+      this.label15.Text = "Equipment";
+      // 
+      // label14
+      // 
+      this.label14.AutoSize = true;
+      this.label14.Location = new System.Drawing.Point(464, 38);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(59, 13);
+      this.label14.TabIndex = 87;
+      this.label14.Text = "Requested";
+      // 
+      // editMeetingCurrentLocationEquipment
+      // 
+      this.editMeetingCurrentLocationEquipment.FormattingEnabled = true;
+      this.editMeetingCurrentLocationEquipment.Location = new System.Drawing.Point(561, 67);
+      this.editMeetingCurrentLocationEquipment.Name = "editMeetingCurrentLocationEquipment";
+      this.editMeetingCurrentLocationEquipment.Size = new System.Drawing.Size(100, 147);
+      this.editMeetingCurrentLocationEquipment.TabIndex = 86;
+      // 
+      // editMeetingCurrentRequestedEquipment
+      // 
+      this.editMeetingCurrentRequestedEquipment.FormattingEnabled = true;
+      this.editMeetingCurrentRequestedEquipment.Location = new System.Drawing.Point(446, 67);
+      this.editMeetingCurrentRequestedEquipment.Name = "editMeetingCurrentRequestedEquipment";
+      this.editMeetingCurrentRequestedEquipment.Size = new System.Drawing.Size(100, 147);
+      this.editMeetingCurrentRequestedEquipment.TabIndex = 85;
+      this.editMeetingCurrentRequestedEquipment.SelectedIndexChanged += new System.EventHandler(this.editMeetingCurrentRequestedEquipment_SelectedIndexChanged);
       // 
       // editMeetingAddParticipantDropdown
       // 
@@ -465,6 +592,7 @@ namespace MeetingScheduler
       // panel2
       // 
       this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+      this.panel2.Controls.Add(this.createNewMeetingParticipantConflictsgroupBox);
       this.panel2.Controls.Add(this.newMeetingChooseParticipantName);
       this.panel2.Controls.Add(this.label12);
       this.panel2.Controls.Add(this.newMeetingMeetingName);
@@ -481,13 +609,47 @@ namespace MeetingScheduler
       this.panel2.Controls.Add(this.label5);
       this.panel2.Location = new System.Drawing.Point(12, 84);
       this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(352, 234);
+      this.panel2.Size = new System.Drawing.Size(352, 345);
       this.panel2.TabIndex = 83;
+      // 
+      // createNewMeetingParticipantConflictsgroupBox
+      // 
+      this.createNewMeetingParticipantConflictsgroupBox.Controls.Add(this.participantConflictsToDisplayLbl);
+      this.createNewMeetingParticipantConflictsgroupBox.Controls.Add(this.label18);
+      this.createNewMeetingParticipantConflictsgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.createNewMeetingParticipantConflictsgroupBox.ForeColor = System.Drawing.Color.Black;
+      this.createNewMeetingParticipantConflictsgroupBox.Location = new System.Drawing.Point(20, 226);
+      this.createNewMeetingParticipantConflictsgroupBox.Name = "createNewMeetingParticipantConflictsgroupBox";
+      this.createNewMeetingParticipantConflictsgroupBox.Size = new System.Drawing.Size(315, 105);
+      this.createNewMeetingParticipantConflictsgroupBox.TabIndex = 95;
+      this.createNewMeetingParticipantConflictsgroupBox.TabStop = false;
+      this.createNewMeetingParticipantConflictsgroupBox.Text = "Participant Conflics";
+      this.createNewMeetingParticipantConflictsgroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+      // 
+      // participantConflictsToDisplayLbl
+      // 
+      this.participantConflictsToDisplayLbl.AutoSize = true;
+      this.participantConflictsToDisplayLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.participantConflictsToDisplayLbl.Location = new System.Drawing.Point(9, 16);
+      this.participantConflictsToDisplayLbl.MaximumSize = new System.Drawing.Size(300, 0);
+      this.participantConflictsToDisplayLbl.Name = "participantConflictsToDisplayLbl";
+      this.participantConflictsToDisplayLbl.Size = new System.Drawing.Size(0, 13);
+      this.participantConflictsToDisplayLbl.TabIndex = 1;
+      // 
+      // label18
+      // 
+      this.label18.AutoSize = true;
+      this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label18.Location = new System.Drawing.Point(6, 16);
+      this.label18.MaximumSize = new System.Drawing.Size(230, 0);
+      this.label18.Name = "label18";
+      this.label18.Size = new System.Drawing.Size(0, 13);
+      this.label18.TabIndex = 0;
       // 
       // newMeetingChooseParticipantName
       // 
       this.newMeetingChooseParticipantName.FormattingEnabled = true;
-      this.newMeetingChooseParticipantName.Location = new System.Drawing.Point(136, 118);
+      this.newMeetingChooseParticipantName.Location = new System.Drawing.Point(23, 139);
       this.newMeetingChooseParticipantName.Name = "newMeetingChooseParticipantName";
       this.newMeetingChooseParticipantName.Size = new System.Drawing.Size(100, 21);
       this.newMeetingChooseParticipantName.TabIndex = 83;
@@ -496,110 +658,17 @@ namespace MeetingScheduler
       // label12
       // 
       this.label12.AutoSize = true;
-      this.label12.Location = new System.Drawing.Point(23, 121);
+      this.label12.Location = new System.Drawing.Point(77, 123);
       this.label12.Name = "label12";
       this.label12.Size = new System.Drawing.Size(94, 13);
       this.label12.TabIndex = 82;
       this.label12.Text = "Choose Particpant";
       // 
-      // editMeetingCurrentLocationEquipment
-      // 
-      this.editMeetingCurrentLocationEquipment.FormattingEnabled = true;
-      this.editMeetingCurrentLocationEquipment.Location = new System.Drawing.Point(561, 67);
-      this.editMeetingCurrentLocationEquipment.Name = "editMeetingCurrentLocationEquipment";
-      this.editMeetingCurrentLocationEquipment.Size = new System.Drawing.Size(100, 147);
-      this.editMeetingCurrentLocationEquipment.TabIndex = 86;
-      // 
-      // editMeetingCurrentRequestedEquipment
-      // 
-      this.editMeetingCurrentRequestedEquipment.FormattingEnabled = true;
-      this.editMeetingCurrentRequestedEquipment.Location = new System.Drawing.Point(446, 67);
-      this.editMeetingCurrentRequestedEquipment.Name = "editMeetingCurrentRequestedEquipment";
-      this.editMeetingCurrentRequestedEquipment.Size = new System.Drawing.Size(100, 147);
-      this.editMeetingCurrentRequestedEquipment.TabIndex = 85;
-      this.editMeetingCurrentRequestedEquipment.SelectedIndexChanged += new System.EventHandler(this.editMeetingCurrentRequestedEquipment_SelectedIndexChanged);
-      // 
-      // label14
-      // 
-      this.label14.AutoSize = true;
-      this.label14.Location = new System.Drawing.Point(464, 38);
-      this.label14.Name = "label14";
-      this.label14.Size = new System.Drawing.Size(59, 13);
-      this.label14.TabIndex = 87;
-      this.label14.Text = "Requested";
-      // 
-      // label15
-      // 
-      this.label15.AutoSize = true;
-      this.label15.Location = new System.Drawing.Point(465, 51);
-      this.label15.Name = "label15";
-      this.label15.Size = new System.Drawing.Size(57, 13);
-      this.label15.TabIndex = 89;
-      this.label15.Text = "Equipment";
-      // 
-      // label16
-      // 
-      this.label16.AutoSize = true;
-      this.label16.Location = new System.Drawing.Point(580, 51);
-      this.label16.Name = "label16";
-      this.label16.Size = new System.Drawing.Size(57, 13);
-      this.label16.TabIndex = 91;
-      this.label16.Text = "Equipment";
-      // 
-      // label17
-      // 
-      this.label17.AutoSize = true;
-      this.label17.Location = new System.Drawing.Point(606, 38);
-      this.label17.Name = "label17";
-      this.label17.Size = new System.Drawing.Size(48, 13);
-      this.label17.TabIndex = 90;
-      this.label17.Text = "Location";
-      // 
-      // label19
-      // 
-      this.label19.AutoSize = true;
-      this.label19.Location = new System.Drawing.Point(567, 38);
-      this.label19.Name = "label19";
-      this.label19.Size = new System.Drawing.Size(41, 13);
-      this.label19.TabIndex = 92;
-      this.label19.Text = "Current";
-      // 
-      // requestedEquipmentConflictDataGroupboxLabel
-      // 
-      this.requestedEquipmentConflictDataGroupboxLabel.Controls.Add(this.equipmentNotAtCurrentLocationLbl);
-      this.requestedEquipmentConflictDataGroupboxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.requestedEquipmentConflictDataGroupboxLabel.ForeColor = System.Drawing.Color.DarkRed;
-      this.requestedEquipmentConflictDataGroupboxLabel.Location = new System.Drawing.Point(437, 220);
-      this.requestedEquipmentConflictDataGroupboxLabel.Name = "requestedEquipmentConflictDataGroupboxLabel";
-      this.requestedEquipmentConflictDataGroupboxLabel.Size = new System.Drawing.Size(240, 65);
-      this.requestedEquipmentConflictDataGroupboxLabel.TabIndex = 94;
-      this.requestedEquipmentConflictDataGroupboxLabel.TabStop = false;
-      this.requestedEquipmentConflictDataGroupboxLabel.Text = "Requested Equipment not availiable";
-      // 
-      // equipmentNotAtCurrentLocationLbl
-      // 
-      this.equipmentNotAtCurrentLocationLbl.AutoSize = true;
-      this.equipmentNotAtCurrentLocationLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.equipmentNotAtCurrentLocationLbl.Location = new System.Drawing.Point(6, 16);
-      this.equipmentNotAtCurrentLocationLbl.MaximumSize = new System.Drawing.Size(230, 0);
-      this.equipmentNotAtCurrentLocationLbl.Name = "equipmentNotAtCurrentLocationLbl";
-      this.equipmentNotAtCurrentLocationLbl.Size = new System.Drawing.Size(0, 13);
-      this.equipmentNotAtCurrentLocationLbl.TabIndex = 0;
-      // 
-      // label13
-      // 
-      this.label13.AutoSize = true;
-      this.label13.Location = new System.Drawing.Point(10, 11);
-      this.label13.Name = "label13";
-      this.label13.Size = new System.Drawing.Size(110, 13);
-      this.label13.TabIndex = 95;
-      this.label13.Text = "Select Meeting to edit";
-      // 
       // Meeting_Initiator
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1059, 385);
+      this.ClientSize = new System.Drawing.Size(1068, 499);
       this.Controls.Add(this.panel2);
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.backToMainMenuButton);
@@ -611,10 +680,14 @@ namespace MeetingScheduler
       this.Load += new System.EventHandler(this.Meeting_Initiator_Load);
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
-      this.panel2.ResumeLayout(false);
-      this.panel2.PerformLayout();
+      this.editMeetingParticipantConflictsGroupbox.ResumeLayout(false);
+      this.editMeetingParticipantConflictsGroupbox.PerformLayout();
       this.requestedEquipmentConflictDataGroupboxLabel.ResumeLayout(false);
       this.requestedEquipmentConflictDataGroupboxLabel.PerformLayout();
+      this.panel2.ResumeLayout(false);
+      this.panel2.PerformLayout();
+      this.createNewMeetingParticipantConflictsgroupBox.ResumeLayout(false);
+      this.createNewMeetingParticipantConflictsgroupBox.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -671,5 +744,11 @@ namespace MeetingScheduler
     private System.Windows.Forms.GroupBox requestedEquipmentConflictDataGroupboxLabel;
     private System.Windows.Forms.Label equipmentNotAtCurrentLocationLbl;
     private System.Windows.Forms.Label label13;
+    private System.Windows.Forms.GroupBox createNewMeetingParticipantConflictsgroupBox;
+    private System.Windows.Forms.Label label18;
+    private System.Windows.Forms.Label participantConflictsToDisplayLbl;
+    private System.Windows.Forms.ToolTip toolTip1;
+    private System.Windows.Forms.GroupBox editMeetingParticipantConflictsGroupbox;
+    private System.Windows.Forms.Label editMeetingParticipantConflictsToDisplay;
   }
 }

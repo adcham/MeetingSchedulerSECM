@@ -96,7 +96,7 @@ namespace MeetingScheduler
 
       testMeeting.changeImportance("Adam", true);
       testMeeting.requestEquipment(testEquipment);
-      testMeeting.requestEquipment(testEquipment6);
+      //testMeeting.requestEquipment(testEquipment6);
 
 
 

@@ -142,23 +142,97 @@ namespace MeetingScheduler
 
     private void newMeetingTimeslotDropdown_SelectedIndexChanged(object sender, EventArgs e)
     {
-      usersToAddToNewMeeting.Clear();
-      newMeetingParticipantList.Items.Clear();
-      newMeetingChooseParticipantName.Items.Clear();
-      List<User> potentialParticipantList = baseParticipant.getUserList();
-      int potentialParticipantListLength = baseParticipant.getNoOfUsers();
-      int currentTimeSlot = (int)Char.GetNumericValue(newMeetingTimeslotDropdown.Text[5]);
-
-      for (int i = 0; i < potentialParticipantListLength; i++)
-      {
-        User currentParticipant = potentialParticipantList.ElementAt(i);
-        bool currentParticipantHasNotExcluded = !(currentParticipant.getExclusionSlot(currentTimeSlot));
-        if (currentParticipantHasNotExcluded)
-          newMeetingChooseParticipantName.Items.Add(currentParticipant.getName());
-      }
+      updateEditMeetingParticipantsAndConflicts(true);
 
       if (newMeetingLocationDropdown.Text == "")
         MessageBox.Show("Select a location first");
+    }
+
+    private void updateEditMeetingParticipantsAndConflicts(bool newMeeting)
+    {
+      usersToAddToNewMeeting.Clear();
+      newMeetingParticipantList.Items.Clear();
+      newMeetingChooseParticipantName.Items.Clear();
+
+      List<User> potentialParticipantList = baseParticipant.getUserList();
+      int potentialParticipantListLength = baseParticipant.getNoOfUsers();
+      int currentTimeSlot;
+      if (newMeeting)
+      {
+        currentTimeSlot = (int)Char.GetNumericValue(newMeetingTimeslotDropdown.Text[5]);
+      }
+      else
+      {
+        if (editMeetingChangeTimeSlotDropdown.Text == "")
+        {
+          currentTimeSlot = (int)Char.GetNumericValue(currentTimeSlotLabel.Text[5]);
+        }
+        else
+        {
+          currentTimeSlot = (int)Char.GetNumericValue(editMeetingChangeTimeSlotDropdown.Text[5]);
+        }
+      }
+
+      StringBuilder stringOfUnavailiableParticipants = new StringBuilder();
+
+      if (newMeeting)
+      {
+        for (int i = 0; i < potentialParticipantListLength; i++)
+        {
+          User currentParticipant = potentialParticipantList.ElementAt(i);
+          bool currentParticipantHasNotExcluded = !(currentParticipant.getExclusionSlot(currentTimeSlot));
+          if (currentParticipantHasNotExcluded)
+            newMeetingChooseParticipantName.Items.Add(currentParticipant.getName());
+          else
+          {
+            stringOfUnavailiableParticipants.Append(currentParticipant.getName() + ", ");
+          }
+        }
+      }
+      else
+      {
+        //similar logic but we check for participants already in the meeting and omit them
+        Meeting currentMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
+
+        int counterOfParticipantsInString = 0;
+        for (int i = 0; i < potentialParticipantListLength; i++)
+        {
+          User currentParticipant = potentialParticipantList.ElementAt(i);
+          bool currentParticipantHasExcluded = (currentParticipant.getExclusionSlot(currentTimeSlot));
+          bool currentParticipantHasExcludedOrInCurrentMeeting = currentParticipantHasExcluded
+             && !((currentMeeting.getParticipantList().Contains(new Meeting.participant(currentParticipant, true)))
+             || (currentMeeting.getParticipantList().Contains(new Meeting.participant(currentParticipant, false))));
+
+          if (currentParticipantHasExcludedOrInCurrentMeeting)
+          {
+            if (counterOfParticipantsInString == 0)
+            {
+              stringOfUnavailiableParticipants.Append(currentParticipant.getName());
+              counterOfParticipantsInString++;
+            }
+            else
+            {
+              stringOfUnavailiableParticipants.Append(", " + currentParticipant.getName());
+              counterOfParticipantsInString++;
+            }
+          }
+        }
+        if (counterOfParticipantsInString > 1)
+        {
+          stringOfUnavailiableParticipants.Append(" are");
+        }
+        else if (counterOfParticipantsInString == 0)
+        {
+          stringOfUnavailiableParticipants.Clear();
+        }
+        else
+        {
+          stringOfUnavailiableParticipants.Append(" is");
+        }
+      }
+
+
+      updateNewMeetingParticipantConflicts(stringOfUnavailiableParticipants.ToString(), newMeeting);
     }
 
     private void newMeetingChooseParticipantName_SelectedIndexChanged(object sender, EventArgs e)
@@ -233,6 +307,7 @@ namespace MeetingScheduler
       updateCurrentLocationEquipment();
       updateMeetingRequestedEquipment();
       updateMissingEquipmentPanel();
+      updateEditMeetingParticipantsAndConflicts(false);
     }
 
     private void updateMissingEquipmentPanel()
@@ -317,27 +392,45 @@ namespace MeetingScheduler
       // remove selected participant
       Meeting currentlySelectedMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
       List<Meeting.participant> currentMeetingParticipants = currentlySelectedMeeting.getParticipantList();
-      Meeting.participant tempParticipant = (Meeting.participant)editMeetingParticipantList.SelectedItem;
-      int i = 0;
-      bool deleted = false;
-      int timeSlot = (int)Char.GetNumericValue(currentTimeSlotLabel.Text[5]) - 1;
 
-      while (i < currentMeetingParticipants.Count() && !deleted)
+      String tempParticipantName = editMeetingParticipantList.Text.ToString();
+      String tempImportantParticipantName = editMeetingImportantParticipantList.Text.ToString();
+
+
+
+      //Meeting.participant tempImportantParticipant = (Meeting.participant)editMeetingImportantParticipantList.SelectedItem;
+      bool selectedParticipantIsImportant = (tempParticipantName.Equals("") && tempImportantParticipantName != null);
+      if (selectedParticipantIsImportant)
       {
-        if (tempParticipant.p.getName() == currentMeetingParticipants.ElementAt(i).p.getName())
+        MessageBox.Show("You can't remove an important participant from a meeting. Change their importance first!");
+      }
+      else
+      {
+
+        Meeting.participant tempParticipant = (Meeting.participant)editMeetingParticipantList.SelectedItem;
+        int i = 0;
+        bool deleted = false;
+        int timeSlot = (int)Char.GetNumericValue(currentTimeSlotLabel.Text[5]) - 1;
+
+        while (i < currentMeetingParticipants.Count() && !deleted)
         {
-          currentMeetingParticipants.ElementAt(i).p.removeExclusionSlot(timeSlot);
-          currentMeetingParticipants.RemoveAt(i);
-          deleted = true;
+          if (tempParticipant.p.getName() == currentMeetingParticipants.ElementAt(i).p.getName())
+          {
+            currentMeetingParticipants.ElementAt(i).p.removeExclusionSlot(timeSlot);
+            currentMeetingParticipants.RemoveAt(i);
+            deleted = true;
+          }
+          else
+          {
+            i++;
+          }
         }
-        else
-        {
-          i++;
-        }
+
+        updateEditMeetingParticipantLists(currentlySelectedMeeting);
+        updateEditMeetingAddNewParticipantDropdown(currentlySelectedMeeting);
+        updateEditMeetingParticipantsAndConflicts(false);
       }
 
-      updateEditMeetingParticipantLists(currentlySelectedMeeting);
-      updateEditMeetingAddNewParticipantDropdown(currentlySelectedMeeting);
     }
 
     private void editMeetingParticipantList_SelectedIndexChanged(object sender, EventArgs e)
@@ -386,6 +479,7 @@ namespace MeetingScheduler
     {
       Meeting currentlySelectedMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
       updateEditMeetingAddNewParticipantDropdown(currentlySelectedMeeting);
+      updateEditMeetingParticipantsAndConflicts(false);
     }
 
     private void button1_Click_1(object sender, EventArgs e)
@@ -464,34 +558,33 @@ namespace MeetingScheduler
       editMeetingAddParticipantDropdown.Text = "";
       updateEditMeetingParticipantLists(currentlySelectedMeeting);
       updateEditMeetingAddNewParticipantDropdown(currentlySelectedMeeting);
-
+      updateEditMeetingParticipantsAndConflicts(false);
     }
 
     private void button5_Click(object sender, EventArgs e)
     {
       Meeting tempMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
       int oldLocation = tempMeeting.getMeetingLocation();
-      int oldTimeSlot = tempMeeting.getTimeSlot()-1;
+      int oldTimeSlot = tempMeeting.getTimeSlot() - 1;
       string curSelectedLocation = editMeetingChangeLocationDropdown.SelectedItem.ToString();
       int newLocation = 0;
       int newTimeSlot = 0;
 
       if (editMeetingChangeTimeSlotDropdown.Text == "") { newTimeSlot = oldTimeSlot; }
-      else { newTimeSlot = (int)Char.GetNumericValue(editMeetingChangeTimeSlotDropdown.Text[5])-1; }
+      else { newTimeSlot = (int)Char.GetNumericValue(editMeetingChangeTimeSlotDropdown.Text[5]) - 1; }
 
       if (curSelectedLocation == "") { newLocation = oldLocation; }
-      else { newLocation = baseLocation.getLocationIndexByString(curSelectedLocation)-1; }
-
+      else { newLocation = baseLocation.getLocationIndexByString(curSelectedLocation) - 1; }
 
       if (newLocation != tempMeeting.getMeetingLocation())
         tempMeeting.changeLocation(newLocation);
 
-      if(newTimeSlot != oldTimeSlot)
+      if (newTimeSlot != oldTimeSlot)
         tempMeeting.changeTimeSlot(newTimeSlot, oldTimeSlot);
 
       List<Meeting[]> listOfMeetings = baseMeeting.getMeetingList();
       Meeting.deleteMeeting(oldTimeSlot, oldLocation);
-      listOfMeetings.ElementAt(newLocation)[newTimeSlot]  =  tempMeeting;
+      listOfMeetings.ElementAt(newLocation)[newTimeSlot] = tempMeeting;
 
       editMeetingChangeLocationDropdown.Text = "";
       editMeetingAddParticipantDropdown.Text = "";
@@ -531,7 +624,7 @@ namespace MeetingScheduler
       List<Location> tempLocList = baseLocation.GetLocationsWithoutStorage();
       List<Equipment> equipmentToDisplay = tempLocList.ElementAt(meetingLocationIndex).GetEquipment();
 
-      foreach(Equipment e in equipmentToDisplay)
+      foreach (Equipment e in equipmentToDisplay)
       {
         editMeetingCurrentLocationEquipment.Items.Add(e);
       }
@@ -544,6 +637,44 @@ namespace MeetingScheduler
       foreach (Equipment e in tempMeeting.getRequestedEquipment())
       {
         editMeetingCurrentRequestedEquipment.Items.Add(e);
+      }
+    }
+
+    private void groupBox1_Enter(object sender, EventArgs e)
+    {
+
+    }
+
+    private void updateNewMeetingParticipantConflicts(string conflicts, bool newMeeting)
+    {
+      GroupBox groupBoxToEdit;
+      Label labelToEdit;
+      if (newMeeting)
+      {
+        groupBoxToEdit = createNewMeetingParticipantConflictsgroupBox;
+        labelToEdit = participantConflictsToDisplayLbl;
+      }
+      else
+      {
+        groupBoxToEdit = editMeetingParticipantConflictsGroupbox;
+        labelToEdit = editMeetingParticipantConflictsToDisplay;
+      }
+
+      bool anyParticipantConflicts = (conflicts == null | conflicts.Equals(""));
+
+      if (anyParticipantConflicts)
+      {
+        groupBoxToEdit.ForeColor = System.Drawing.Color.DarkGreen;
+        groupBoxToEdit.Text = "No participant conflicts";
+        labelToEdit.ForeColor = System.Drawing.Color.Black;
+        labelToEdit.Text = "All potential participants are availiable at this time";
+      }
+      else
+      {
+        groupBoxToEdit.ForeColor = System.Drawing.Color.DarkRed;
+        groupBoxToEdit.Text = "Participant conflicts found";
+        labelToEdit.ForeColor = System.Drawing.Color.Black;
+        labelToEdit.Text = conflicts + " not availiable at the current meeting time slot.";
       }
     }
   }

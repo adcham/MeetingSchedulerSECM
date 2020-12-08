@@ -241,7 +241,7 @@ namespace MeetingScheduler
 
       foreach(participant pToChangeExclusionsFor in this.participants)
       {
-        pToChangeExclusionsFor.p.removeExclusionSlot(oldTimeSlot-1);
+        pToChangeExclusionsFor.p.removeExclusionSlot(oldTimeSlot);
         pToChangeExclusionsFor.p.addExclusionSlot(timeSlot);
       }
 

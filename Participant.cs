@@ -58,5 +58,10 @@ namespace MeetingScheduler
       this.Hide();
       newForm.ShowDialog();
     }
+
+    private void Participant_Load(object sender, EventArgs e)
+    {
+
+    }
   }
 }

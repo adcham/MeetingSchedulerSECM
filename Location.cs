@@ -138,13 +138,6 @@ namespace MeetingScheduler
       return templocationMinusStorage;
     }
 
-    public static List<Location> GetLocationsWithoutStorageStatic()
-    {
-      List<Location> templocationMinusStorage = locationList;
-      templocationMinusStorage.RemoveAt(0);
-      return templocationMinusStorage;
-    }
-
     public int getNoOfLocations()
     {
       return noOfLocations;
