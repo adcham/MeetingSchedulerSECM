@@ -77,6 +77,8 @@ namespace MeetingScheduler
       int currentTimeSlot = (int)Char.GetNumericValue(newMeetingTimeslotDropdown.Text[5]) - 1;
       string meetingName = newMeetingMeetingName.Text;
       Meeting newMeeting = new Meeting(meetingName, usersToAddToNewMeeting, currentTimeSlot, indexOfLocation);
+      Meeting[] meetingSlots = baseLocation.getTimeSlotsForThisLocation(indexOfLocation);
+      meetingSlots[currentTimeSlot]  =  newMeeting;
       clearNewMeetingFormData();
       updateEditMeetingDropdown();
     }
@@ -132,11 +134,15 @@ namespace MeetingScheduler
       newMeetingTimeslotDropdown.Text = "";
       string currentlySelectedLocation = newMeetingLocationDropdown.Text;
       int indexOfLocation = baseLocation.findLocationIndex(currentlySelectedLocation);
+      List<Meeting[]> listofMeetings = baseMeeting.getMeetingList();
       Meeting[] meetingSlots = baseLocation.getTimeSlotsForThisLocation(indexOfLocation);
+
       for (int slot = 0; slot < 6; slot++)
       {
-        if (meetingSlots[slot] == null)
+        if (meetingSlots[slot] == null && listofMeetings.ElementAt(indexOfLocation-1)[slot]==null)
+        {
           newMeetingTimeslotDropdown.Items.Add("Slot " + (slot + 1));
+        }
       }
     }
 
@@ -144,7 +150,7 @@ namespace MeetingScheduler
     {
       updateEditMeetingParticipantsAndConflicts(true);
 
-      if (newMeetingLocationDropdown.Text == "")
+      if (newMeetingLocationDropdown.Text == " ")
         MessageBox.Show("Select a location first");
     }
 
@@ -297,10 +303,24 @@ namespace MeetingScheduler
       newMeetingChooseParticipantName.Items.Clear();
       List<User> potentialParticipantList = baseParticipant.getUserList();
 
-      foreach (User u in potentialParticipantList)
+      /*foreach (User u in potentialParticipantList)
       {
         if (!usersToAddToNewMeeting.Contains(u))
           newMeetingChooseParticipantName.Items.Add(u.getName());
+      }*/
+
+
+      int currentTimeSlot = (int)Char.GetNumericValue(newMeetingTimeslotDropdown.Text[5]);
+      for (int i = 0; i < potentialParticipantList.Count; i++)
+      {
+        User currentParticipant = potentialParticipantList.ElementAt(i);
+        bool currentParticipantHasNotExcluded = !(currentParticipant.getExclusionSlot(currentTimeSlot));
+        bool userIsCurrentInNewMeetingParticipantList = newMeetingParticipantList.Items.Contains(currentParticipant.getName());
+        if (currentParticipantHasNotExcluded && !userIsCurrentInNewMeetingParticipantList)
+        {
+          newMeetingChooseParticipantName.Items.Add(currentParticipant.getName());
+        }
+
       }
     }
 
@@ -329,6 +349,7 @@ namespace MeetingScheduler
     {
       Meeting currentlySelectedMeeting = (Meeting)editMeetingListChooseMeetingDropdown.SelectedItem;
       editMeetingReset(currentlySelectedMeeting);
+      
     }
 
     private void editMeetingReset(Meeting currentlySelectedMeeting)
@@ -400,6 +421,8 @@ namespace MeetingScheduler
 
     private void updateEditMeetingTimeSlot(Meeting meeting)
     {
+      editMeetingChangeTimeSlotDropdown.Items.Clear();
+
       int timeSlot = meeting.getTimeSlot();
       int locationID = meeting.getMeetingLocation();
 
@@ -448,7 +471,7 @@ namespace MeetingScheduler
       bool selectedParticipantIsImportant = (tempParticipantName.Equals("") && tempImportantParticipantName != null);
       if (selectedParticipantIsImportant)
       {
-        MessageBox.Show("You can't remove an important participant from a meeting. Change their importance first!");
+        MessageBox.Show("Please select a non-important participant to remove.");
       }
       else
       {

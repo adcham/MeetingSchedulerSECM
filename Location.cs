@@ -15,24 +15,25 @@ namespace MeetingScheduler
     private string locationName;
     //private string locationAddress;
     private List<Equipment> availableEquipment;
-    private Meeting[] timeSlots  =  new Meeting[6];
+    private Meeting[] timeSlots;
     private const int NOOFTIMESLOTS = 6;
 
 
     public Location(string name)
     {
-      noOfLocations++;
       if (!(name.Equals("Storage"))) {
         locationID = noOfLocations;
         Meeting baseMeeting2 = new Meeting();
         List<Meeting[]> listOfMeetings = baseMeeting2.getMeetingList();
         listOfMeetings.Add(new Meeting[NOOFTIMESLOTS]);
       }
+      noOfLocations++;
 
       locationName = name;
 
       availableEquipment = new List<Equipment>();
       noOfEquipment = 0;
+      timeSlots  = new Meeting[6];
 
       locationList.Add(this);
     }

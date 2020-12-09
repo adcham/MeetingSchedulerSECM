@@ -73,6 +73,9 @@ namespace MeetingScheduler
       selectMeetingDropdown.Items.Clear();
       selectMeetingDropdown.Text = "";
 
+      currentMeetingLocationLbl.Text = "";
+      currentMeetingTimeSlotLbl.Text = "";
+
       currentMeetingParticipantListbox.Items.Clear();
 
       currentMeetingEquipmentListbox.Items.Clear();
@@ -194,11 +197,12 @@ namespace MeetingScheduler
 
     private void updateTimeSlotAndLocationLabels()
     {
-      int currentMeetingIndex = currentMeeting.getMeetingLocation();
-      string currentLocationName = currentMeeting.getLocationName();
-
+      List<Location> menuLocations = baseLocation.GetLocations();
+      int currentMeetingIndex = currentMeeting.getMeetingLocation() +1;
+      int currentTimeSlot = currentMeeting.getTimeSlot();
+      string currentLocationName = menuLocations.ElementAt(currentMeetingIndex).getName();
       currentMeetingLocationLbl.Text = currentLocationName;
-      currentMeetingTimeSlotLbl.Text = "Slot " + currentMeetingIndex;
+      currentMeetingTimeSlotLbl.Text = "Slot " + (currentTimeSlot);
     }
     private void updateSuggestedLocationsListbox()
     {
@@ -224,7 +228,8 @@ namespace MeetingScheduler
     private void checkBox1_CheckedChanged(object sender, EventArgs e)
     {
       //check value of checkbox and set it according to the change
-      if (currentMeeting != null) {
+      if (currentMeeting != null)
+      {
         if (confirmAttendanceCheckbox.Checked == true)
         {
           currentMeeting.changeAttendance(currentUser.getName(), true);

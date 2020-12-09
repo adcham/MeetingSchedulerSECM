@@ -99,12 +99,6 @@ namespace MeetingScheduler
 
     public Meeting()
     {
-      /*  List<Location> temp = baseLocation.GetLocationsWithoutStorage();
-        for (int i = 0; i < temp.Count; i++)
-        {
-          listOfMeetings.Add(new Meeting[NOOFTIMESLOTS]);
-        }
-      */
 
     }
 
@@ -161,7 +155,7 @@ namespace MeetingScheduler
     public string getMissingEquipmentToString()
     {
       StringBuilder missingEquipmentList = new StringBuilder();
-      List<Equipment> listOfEquipmentAtCurrentLocation = baseLocation.GetEquipment(meetingLocation);
+      List<Equipment> listOfEquipmentAtCurrentLocation = baseLocation.GetEquipment(meetingLocation+1);
       bool firstitem = true;
 
       foreach (Equipment e in requestedEquipment)

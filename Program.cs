@@ -36,7 +36,7 @@ namespace MeetingScheduler
       {
         for (int i = 0; i < 3; i++)
         {
-          int j = RandomNumber(4, 6);
+          int j = RandomNumber(4, 5);
           userName.addExclusionSlot(j);
         }
       }
@@ -160,7 +160,7 @@ namespace MeetingScheduler
       randomUsers2.Add(testParticipantArray[3]);
       randomUsers2.Add(testParticipantArray[4]);
       randomUsers2.Add(testParticipantArray[5]);
-      variousMeetings[2] = new Meeting("Meeting 2", randomUsers1, 1, 1);
+      variousMeetings[2] = new Meeting("Meeting 2", randomUsers2, 1, 1);
       variousMeetings[2].changeImportance(testParticipantArray[3].getName(), true);
       variousMeetings[2].changeAttendance(testParticipantArray[3].getName(), true);
       variousMeetings[2].changeAttendance(testParticipantArray[4].getName(), true);
@@ -176,7 +176,7 @@ namespace MeetingScheduler
       randomUsers3.Add(testParticipantArray[0]);
       randomUsers3.Add(testParticipantArray[1]);
       randomUsers3.Add(testParticipantArray[4]);
-      variousMeetings[3] = new Meeting("Meeting 3", randomUsers1, 2, 4);
+      variousMeetings[3] = new Meeting("Meeting 3", randomUsers3, 2, 4);
       variousMeetings[3].changeImportance(testParticipantArray[1].getName(), true);
       variousMeetings[3].changeAttendance(testParticipantArray[1].getName(), true);
       variousMeetings[3].changeAttendance(testParticipantArray[4].getName(), true);

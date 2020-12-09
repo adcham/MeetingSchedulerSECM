@@ -62,6 +62,11 @@ namespace MeetingScheduler
       this.label11 = new System.Windows.Forms.Label();
       this.newMeetingMeetingName = new System.Windows.Forms.TextBox();
       this.panel1 = new System.Windows.Forms.Panel();
+      this.panel3 = new System.Windows.Forms.Panel();
+      this.label21 = new System.Windows.Forms.Label();
+      this.label20 = new System.Windows.Forms.Label();
+      this.editImportantMeetingParticipantAttendingListbox = new System.Windows.Forms.ListBox();
+      this.editMeetingParticipantAttendingListbox = new System.Windows.Forms.ListBox();
       this.editMeetingParticipantConflictsGroupbox = new System.Windows.Forms.GroupBox();
       this.editMeetingParticipantConflictsToDisplay = new System.Windows.Forms.Label();
       this.label13 = new System.Windows.Forms.Label();
@@ -87,17 +92,12 @@ namespace MeetingScheduler
       this.newMeetingChooseParticipantName = new System.Windows.Forms.ComboBox();
       this.label12 = new System.Windows.Forms.Label();
       this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-      this.editMeetingParticipantAttendingListbox = new System.Windows.Forms.ListBox();
-      this.editImportantMeetingParticipantAttendingListbox = new System.Windows.Forms.ListBox();
-      this.label20 = new System.Windows.Forms.Label();
-      this.label21 = new System.Windows.Forms.Label();
-      this.panel3 = new System.Windows.Forms.Panel();
       this.panel1.SuspendLayout();
+      this.panel3.SuspendLayout();
       this.editMeetingParticipantConflictsGroupbox.SuspendLayout();
       this.requestedEquipmentConflictDataGroupboxLabel.SuspendLayout();
       this.panel2.SuspendLayout();
       this.createNewMeetingParticipantConflictsgroupBox.SuspendLayout();
-      this.panel3.SuspendLayout();
       this.SuspendLayout();
       // 
       // label5
@@ -424,6 +424,59 @@ namespace MeetingScheduler
       this.panel1.Size = new System.Drawing.Size(816, 345);
       this.panel1.TabIndex = 82;
       // 
+      // panel3
+      // 
+      this.panel3.BackColor = System.Drawing.SystemColors.InactiveCaption;
+      this.panel3.Controls.Add(this.label21);
+      this.panel3.Controls.Add(this.label20);
+      this.panel3.Controls.Add(this.editImportantMeetingParticipantAttendingListbox);
+      this.panel3.Controls.Add(this.editMeetingParticipantAttendingListbox);
+      this.panel3.Controls.Add(this.label10);
+      this.panel3.Controls.Add(this.editMeetingImportantParticipantList);
+      this.panel3.Controls.Add(this.label3);
+      this.panel3.Controls.Add(this.editMeetingParticipantList);
+      this.panel3.Controls.Add(this.button1);
+      this.panel3.Controls.Add(this.button8);
+      this.panel3.Location = new System.Drawing.Point(236, 3);
+      this.panel3.Name = "panel3";
+      this.panel3.Size = new System.Drawing.Size(312, 285);
+      this.panel3.TabIndex = 100;
+      this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+      // 
+      // label21
+      // 
+      this.label21.AutoSize = true;
+      this.label21.Location = new System.Drawing.Point(84, 22);
+      this.label21.Name = "label21";
+      this.label21.Size = new System.Drawing.Size(149, 13);
+      this.label21.TabIndex = 99;
+      this.label21.Text = "❌ = Unconfirmed Attendance";
+      // 
+      // label20
+      // 
+      this.label20.AutoSize = true;
+      this.label20.Location = new System.Drawing.Point(89, 8);
+      this.label20.Name = "label20";
+      this.label20.Size = new System.Drawing.Size(136, 13);
+      this.label20.TabIndex = 98;
+      this.label20.Text = "✔ = Confirmed Attendance";
+      // 
+      // editImportantMeetingParticipantAttendingListbox
+      // 
+      this.editImportantMeetingParticipantAttendingListbox.FormattingEnabled = true;
+      this.editImportantMeetingParticipantAttendingListbox.Location = new System.Drawing.Point(173, 65);
+      this.editImportantMeetingParticipantAttendingListbox.Name = "editImportantMeetingParticipantAttendingListbox";
+      this.editImportantMeetingParticipantAttendingListbox.Size = new System.Drawing.Size(22, 147);
+      this.editImportantMeetingParticipantAttendingListbox.TabIndex = 97;
+      // 
+      // editMeetingParticipantAttendingListbox
+      // 
+      this.editMeetingParticipantAttendingListbox.FormattingEnabled = true;
+      this.editMeetingParticipantAttendingListbox.Location = new System.Drawing.Point(18, 65);
+      this.editMeetingParticipantAttendingListbox.Name = "editMeetingParticipantAttendingListbox";
+      this.editMeetingParticipantAttendingListbox.Size = new System.Drawing.Size(22, 147);
+      this.editMeetingParticipantAttendingListbox.TabIndex = 96;
+      // 
       // editMeetingParticipantConflictsGroupbox
       // 
       this.editMeetingParticipantConflictsGroupbox.Controls.Add(this.editMeetingParticipantConflictsToDisplay);
@@ -624,7 +677,7 @@ namespace MeetingScheduler
       this.createNewMeetingParticipantConflictsgroupBox.Size = new System.Drawing.Size(315, 105);
       this.createNewMeetingParticipantConflictsgroupBox.TabIndex = 95;
       this.createNewMeetingParticipantConflictsgroupBox.TabStop = false;
-      this.createNewMeetingParticipantConflictsgroupBox.Text = "Participant Conflics";
+      this.createNewMeetingParticipantConflictsgroupBox.Text = "Participant Conflicts";
       this.createNewMeetingParticipantConflictsgroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
       // 
       // participantConflictsToDisplayLbl
@@ -665,59 +718,6 @@ namespace MeetingScheduler
       this.label12.TabIndex = 82;
       this.label12.Text = "Choose Particpant";
       // 
-      // editMeetingParticipantAttendingListbox
-      // 
-      this.editMeetingParticipantAttendingListbox.FormattingEnabled = true;
-      this.editMeetingParticipantAttendingListbox.Location = new System.Drawing.Point(18, 65);
-      this.editMeetingParticipantAttendingListbox.Name = "editMeetingParticipantAttendingListbox";
-      this.editMeetingParticipantAttendingListbox.Size = new System.Drawing.Size(22, 147);
-      this.editMeetingParticipantAttendingListbox.TabIndex = 96;
-      // 
-      // editImportantMeetingParticipantAttendingListbox
-      // 
-      this.editImportantMeetingParticipantAttendingListbox.FormattingEnabled = true;
-      this.editImportantMeetingParticipantAttendingListbox.Location = new System.Drawing.Point(173, 65);
-      this.editImportantMeetingParticipantAttendingListbox.Name = "editImportantMeetingParticipantAttendingListbox";
-      this.editImportantMeetingParticipantAttendingListbox.Size = new System.Drawing.Size(22, 147);
-      this.editImportantMeetingParticipantAttendingListbox.TabIndex = 97;
-      // 
-      // label20
-      // 
-      this.label20.AutoSize = true;
-      this.label20.Location = new System.Drawing.Point(89, 8);
-      this.label20.Name = "label20";
-      this.label20.Size = new System.Drawing.Size(136, 13);
-      this.label20.TabIndex = 98;
-      this.label20.Text = "✔ = Confirmed Attendance";
-      // 
-      // label21
-      // 
-      this.label21.AutoSize = true;
-      this.label21.Location = new System.Drawing.Point(84, 22);
-      this.label21.Name = "label21";
-      this.label21.Size = new System.Drawing.Size(149, 13);
-      this.label21.TabIndex = 99;
-      this.label21.Text = "❌ = Unconfirmed Attendance";
-      // 
-      // panel3
-      // 
-      this.panel3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-      this.panel3.Controls.Add(this.label21);
-      this.panel3.Controls.Add(this.label20);
-      this.panel3.Controls.Add(this.editImportantMeetingParticipantAttendingListbox);
-      this.panel3.Controls.Add(this.editMeetingParticipantAttendingListbox);
-      this.panel3.Controls.Add(this.label10);
-      this.panel3.Controls.Add(this.editMeetingImportantParticipantList);
-      this.panel3.Controls.Add(this.label3);
-      this.panel3.Controls.Add(this.editMeetingParticipantList);
-      this.panel3.Controls.Add(this.button1);
-      this.panel3.Controls.Add(this.button8);
-      this.panel3.Location = new System.Drawing.Point(236, 3);
-      this.panel3.Name = "panel3";
-      this.panel3.Size = new System.Drawing.Size(312, 285);
-      this.panel3.TabIndex = 100;
-      this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-      // 
       // Meeting_Initiator
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -736,6 +736,8 @@ namespace MeetingScheduler
       this.Load += new System.EventHandler(this.Meeting_Initiator_Load);
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
+      this.panel3.ResumeLayout(false);
+      this.panel3.PerformLayout();
       this.editMeetingParticipantConflictsGroupbox.ResumeLayout(false);
       this.editMeetingParticipantConflictsGroupbox.PerformLayout();
       this.requestedEquipmentConflictDataGroupboxLabel.ResumeLayout(false);
@@ -744,8 +746,6 @@ namespace MeetingScheduler
       this.panel2.PerformLayout();
       this.createNewMeetingParticipantConflictsgroupBox.ResumeLayout(false);
       this.createNewMeetingParticipantConflictsgroupBox.PerformLayout();
-      this.panel3.ResumeLayout(false);
-      this.panel3.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
