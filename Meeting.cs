@@ -271,7 +271,7 @@ namespace MeetingScheduler
     {
       int foundIndex = 0;
       bool found = false;
-      while (!found && foundIndex < noOfParticipants)
+      while (!found && foundIndex < participants.Count)
       {
         if (participants.ElementAt(foundIndex).p.getName().Equals(name))
         {
